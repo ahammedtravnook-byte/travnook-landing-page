@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Lenis from 'lenis';
 
 import Navbar from './components/Navbar';
+import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
 import TrustBar from './components/TrustBar';
 import About from './components/About';
@@ -37,7 +38,8 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-brand-offwhite text-brand-dark min-h-screen font-sans selection:bg-brand-yellow selection:text-white">
+    <div className="bg-brand-offwhite text-brand-dark min-h-screen font-sans selection:bg-brand-yellow selection:text-white cursor-none">
+      <CustomCursor />
       <Navbar />
       <Hero />
       <TrustBar />

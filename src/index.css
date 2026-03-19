@@ -12,12 +12,12 @@
 }
 
 /* Base Styles */
-html {
+html { cursor: none !important;
   scroll-behavior: initial; /* Lenis handles smoothing */
   overflow-x: hidden;
 }
 
-body {
+body { cursor: none !important;
   @apply font-sans bg-brand-offwhite text-gray-900;
   font-family: 'Outfit', sans-serif;
   overflow-x: hidden;
