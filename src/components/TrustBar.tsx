@@ -1,34 +1,123 @@
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Award, ShieldCheck, Clock, BadgeCheck } from 'lucide-react';
+import { getCountryConfig } from '../data/countryConfig';
 
-const trustItems = [
-  { icon: <Award className="w-8 h-8 text-brand-yellow" />, text: "Proven Track Record" },
-  { icon: <Clock className="w-8 h-8 text-brand-green" />, text: "A Decade of Service" },
-  { icon: <ShieldCheck className="w-8 h-8 text-brand-teal" />, text: "Transparent Pricing" },
-  { icon: <BadgeCheck className="w-8 h-8 text-brand-yellow" />, text: "Comprehensive Support" }
-];
+interface Props {
+  lang?: 'en' | 'ar';
+}
 
-const TrustBar = () => {
+const TrustBar = ({ lang = 'en' }: Props) => {
+  const config = useMemo(() => getCountryConfig(), []);
+  const isAlt = config.countryName !== 'Schengen';
+
+  const isJapan = config.countryName === 'Japan';
+  const isIndo = config.countryName === 'Indonesia';
+
+  const iconColor1 = config.countryName === 'Schengen' ? 'text-brand-yellow'
+                    : isJapan ? 'text-sky-500'
+                    : isIndo ? 'text-orange-500'
+                    : 'text-orange-500';
+  const iconColor2 = config.countryName === 'Schengen' ? 'text-brand-green'
+                    : isJapan ? 'text-cyan-500'
+                    : isIndo ? 'text-emerald-500'
+                    : 'text-teal-500';
+  const iconColor3 = config.countryName === 'Schengen' ? 'text-brand-teal'
+                    : isJapan ? 'text-sky-800'
+                    : isIndo ? 'text-emerald-800'
+                    : 'text-teal-800';
+
+  const trustItems = lang === 'ar' ? [
+    { icon: <Award className={`w-5 h-5 md:w-7 md:h-7 ${iconColor1}`} />, text: "فريق مساعدة تأشيرات خبير" },
+    { icon: <Clock className={`w-5 h-5 md:w-7 md:h-7 ${iconColor2}`} />, text: "نخدم سكان الإمارات لأكثر من 10 سنوات" },
+    { icon: <ShieldCheck className={`w-5 h-5 md:w-7 md:h-7 ${iconColor3}`} />, text: "عملية شفافة وتواصل واضح" },
+    { icon: <BadgeCheck className={`w-5 h-5 md:w-7 md:h-7 ${iconColor1}`} />, text: "دعم شامل لطلب التأشيرة" }
+  ] : [
+    { icon: <Award className={`w-5 h-5 md:w-7 md:h-7 ${iconColor1}`} />, text: "Experienced Visa Assistance Team" },
+    { icon: <Clock className={`w-5 h-5 md:w-7 md:h-7 ${iconColor2}`} />, text: "Serving UAE Residents for 10+ Years" },
+    { icon: <ShieldCheck className={`w-5 h-5 md:w-7 md:h-7 ${iconColor3}`} />, text: "Transparent Process & Communication" },
+    { icon: <BadgeCheck className={`w-5 h-5 md:w-7 md:h-7 ${iconColor1}`} />, text: "Comprehensive Application Support" }
+  ];
+
+  /* ──────────────────────────────────────────────
+     ALT LAYOUT — Indonesia / China
+     Marquee-style scrolling trust indicators
+     ────────────────────────────────────────────── */
+  if (isAlt) {
+    const gradBorder = isJapan ? 'border-sky-200/50' : isIndo ? 'border-emerald-200/50' : 'border-teal-200/50';
+    const gradBg = isJapan ? 'from-sky-50/80 to-white/80' : isIndo ? 'from-emerald-50/80 to-white/80' : 'from-teal-50/80 to-white/80';
+
+    return (
+      <section className="relative z-40 -mt-8 md:-mt-14 pb-6 md:pb-10 w-full px-4 hidden md:block">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className={`bg-gradient-to-r ${gradBg} backdrop-blur-2xl border ${gradBorder} rounded-2xl md:rounded-[1.5rem] p-3 md:p-4 shadow-[0_15px_40px_rgba(0,0,0,0.06)] overflow-hidden relative`}
+          >
+            {/* Marquee animation */}
+            <div className="flex animate-marquee gap-8 md:gap-12">
+              {[...trustItems, ...trustItems, ...trustItems].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2.5 md:gap-3 shrink-0 group cursor-default"
+                >
+                  <div className="w-9 h-9 md:w-11 md:h-11 rounded-lg md:rounded-xl bg-white shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </div>
+                  <span className={`font-outfit font-bold text-[11px] md:text-[13px] ${config.themeColor.primary} whitespace-nowrap`}>
+                    {item.text}
+                  </span>
+                  <span className="text-gray-200 mx-2 hidden md:inline">•</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.33%); }
+          }
+          .animate-marquee {
+            animation: marquee 20s linear infinite;
+          }
+          .animate-marquee:hover {
+            animation-play-state: paused;
+          }
+        `}} />
+      </section>
+    );
+  }
+
+  /* ──────────────────────────────────────────────
+     SCHENGEN LAYOUT — Original (unchanged)
+     ────────────────────────────────────────────── */
+  const glowA = 'bg-brand-yellow/10';
+  const glowB = 'bg-brand-teal/10';
+
   return (
-    <section className="relative z-40 -mt-16 pb-12 w-full px-4">
+    <section className="relative z-40 -mt-10 md:-mt-16 pb-8 md:pb-12 w-full px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-white/70 backdrop-blur-2xl border border-white rounded-[2rem] p-6 shadow-float grid grid-cols-2 md:grid-cols-4 gap-6 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-teal/10 rounded-full blur-3xl"></div>
-          
+        <div className="bg-white/70 backdrop-blur-2xl border border-white rounded-2xl md:rounded-[2rem] p-4 md:p-6 shadow-float grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 relative overflow-hidden">
+          <div className={`absolute top-0 right-0 w-64 h-64 ${glowA} rounded-full blur-3xl`}></div>
+          <div className={`absolute bottom-0 left-0 w-64 h-64 ${glowB} rounded-full blur-3xl`}></div>
           {trustItems.map((item, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.15, duration: 0.6, type: "spring" }}
               viewport={{ once: true, margin: "-50px" }}
-              className="flex flex-col items-center justify-center text-center gap-3 p-4 relative z-10 group"
+              className="flex flex-col items-center justify-center text-center gap-2 md:gap-3 p-2 md:p-4 relative z-10 group"
             >
-              <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center group-hover:-translate-y-2 group-hover:shadow-glow transition-all duration-300">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white shadow-sm flex items-center justify-center group-hover:-translate-y-2 group-hover:shadow-glow transition-all duration-300">
                 {item.icon}
               </div>
-              <p className="font-bold text-brand-dark text-[15px] leading-tight max-w-[150px] group-hover:text-brand-teal transition-colors">
+              <p className="font-bold text-[12px] md:text-[15px] leading-tight max-w-[130px] md:max-w-[150px] transition-colors text-brand-dark">
                 {item.text}
               </p>
             </motion.div>

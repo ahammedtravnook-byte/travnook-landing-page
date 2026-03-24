@@ -1,22 +1,37 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import { Plane, MoveRight, Cloud, CalendarCheck, ShieldCheck } from 'lucide-react';
+import { Plane, MoveRight, Cloud, CalendarCheck } from 'lucide-react';
+import { getCountryConfig, getImagePath } from '../data/countryConfig';
 
-const Hero = () => {
+interface HeroProps {
+  lang?: 'en' | 'ar';
+}
+
+const Hero = ({ lang = 'en' }: HeroProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const config = useMemo(() => getCountryConfig(), []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.hero-text', 
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out', delay: 0.5 }
+      gsap.fromTo('.hero-text',
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power4.out', delay: 0.2 }
       );
-      
+
       gsap.fromTo('.hero-image',
-        { scale: 0.8, opacity: 0, y: 50 },
-        { scale: 1, opacity: 1, y: 0, duration: 1.2, delay: 0.8, ease: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+        { scale: 0.9, opacity: 0, y: 30 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.8, delay: 0.4, ease: 'power3.out' }
       );
+
+      // Special animations for China collage elements
+      if (config.countryName === 'China') {
+        gsap.fromTo('.hero-china-portal',
+          { scale: 0.8, opacity: 0, rotate: -5 },
+          { scale: 1, opacity: 1, rotate: 0, duration: 1.2, delay: 0.6, ease: 'expo.out' }
+        );
+        gsap.to('.hero-china-accents', { y: 20, duration: 5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+      }
 
       gsap.to('.hero-cloud-1', { x: 30, y: -10, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
       gsap.to('.hero-cloud-2', { x: -40, y: 15, duration: 5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
@@ -27,103 +42,304 @@ const Hero = () => {
     return () => ctx.revert();
   }, []);
 
+  // Determine accent color for the main background
+  const bgClass = config.countryName === 'Schengen' ? 'bg-brand-yellow'
+    : config.countryName === 'Indonesia' ? 'bg-emerald-500'
+      : 'bg-teal-600';
+
+  const overlayClass = config.countryName === 'Schengen' ? 'bg-brand-teal'
+    : config.countryName === 'Indonesia' ? 'bg-emerald-900'
+      : 'bg-teal-900';
+
+  // Determine button color
+  const btnClass = config.countryName === 'Schengen' ? 'bg-brand-green hover:bg-brand-yellow text-white'
+    : config.countryName === 'Indonesia' ? 'bg-emerald-400 hover:bg-emerald-300 text-emerald-950'
+      : 'bg-[#FF8000] hover:bg-[#FF9933] text-white';
+
+  const badgeIconClass = config.countryName === 'Schengen' ? 'text-brand-green'
+    : config.countryName === 'Indonesia' ? 'text-emerald-300'
+      : 'text-[#FF8000]';
+
+  const badgeTextClass = config.countryName === 'Schengen' ? 'text-brand-yellow'
+    : config.countryName === 'Indonesia' ? 'text-emerald-100'
+      : 'text-[#FF9933]';
+
   return (
-    <div ref={containerRef} className="relative z-10 w-full min-h-screen lg:min-h-[110vh] bg-brand-yellow overflow-hidden flex items-center pt-24 lg:pt-0" id="home">
-      
-      {/* The Diagonal Ripped Paper Split */}
-      <div 
-        className="absolute top-0 left-0 w-full h-full bg-brand-teal z-0 pointer-events-none"
-        style={{
-          clipPath: window.innerWidth > 1024 
-            ? 'polygon(0 0, 75% 0, 45% 100%, 0% 100%)' 
-            : 'polygon(0 0, 100% 0, 100% 60%, 0% 100%)',
-          boxShadow: '10px 0 20px rgba(0,0,0,0.5)'
-        }}
-      >
-        <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-cover bg-center" 
-             style={{ backgroundImage: "url('/images/schengen_hero_landscape_1773825066510.png')" }}></div>
-      </div>
-      
+    <div ref={containerRef} className={`relative z-10 w-full min-h-[90vh] lg:min-h-[110vh] ${bgClass} overflow-hidden flex items-center pt-20 lg:pt-0 pb-10 lg:pb-0`} id="home">
+
+      {/* Distinct Background Splits */}
+      {config.countryName === 'Japan' && (
+        <div
+          className={`absolute top-0 left-0 w-full h-full bg-slate-900 z-0 pointer-events-none`}
+          style={{
+            clipPath: window.innerWidth > 1024
+              ? 'polygon(0 0, 80% 0, 30% 100%, 0% 100%)' // Sweeping vertical slice
+              : 'polygon(0 0, 100% 0, 100% 60%, 0% 100%)',
+          }}
+        >
+          <div className="absolute inset-0 opacity-10 mix-blend-overlay bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(config.hero.image)}')` }}></div>
+          {/* Subtle gradient overlay to soften edges for Japan */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-slate-900/50"></div>
+        </div>
+      )}
+
+      {config.countryName === 'Indonesia' && (
+        <>
+          {/* Immersive background image with very dark overlay for contrast */}
+          <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+            <div className="absolute inset-0 bg-cover bg-center brightness-[0.4] filter blur-[2px]" style={{ backgroundImage: `url('${getImagePath(config.hero.image)}')` }}></div>
+            <div className="absolute inset-0 bg-emerald-950/70 mix-blend-multiply"></div>
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-emerald-900 to-transparent"></div>
+          </div>
+          {/* Decorative sweeping light ray */}
+          <div className="absolute top-0 right-0 w-[80%] h-full bg-gradient-to-l from-emerald-400/20 to-transparent z-0 pointer-events-none transform skew-x-[-20deg] translate-x-20"></div>
+        </>
+      )}
+
+      {config.countryName === 'China' && (
+        <div
+          className={`absolute top-0 left-0 w-full h-full ${overlayClass} z-0 pointer-events-none`}
+          style={{
+            clipPath: window.innerWidth > 1024
+              ? 'polygon(0 0, 60% 0, 40% 100%, 0% 100%)' // Tighter angle
+              : 'polygon(0 0, 100% 0, 100% 50%, 0% 100%)',
+            boxShadow: '10px 0 30px rgba(0,0,0,0.4)'
+          }}
+        >
+          <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(config.hero.image)}')` }}></div>
+        </div>
+      )}
+
+      {config.countryName === 'Schengen' && (
+        <div
+          className={`absolute top-0 left-0 w-full h-full ${overlayClass} z-0 pointer-events-none`}
+          style={{
+            clipPath: window.innerWidth > 1024
+              ? 'polygon(0 0, 75% 0, 45% 100%, 0% 100%)'
+              : 'polygon(0 0, 100% 0, 100% 55%, 0% 100%)',
+            boxShadow: '10px 0 20px rgba(0,0,0,0.5)'
+          }}
+        >
+          <div className="absolute inset-0 opacity-20 mix-blend-overlay bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(config.hero.image)}')` }}></div>
+        </div>
+      )}
+
       {/* Wavy/Ripped edge illusion */}
       <svg className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none opacity-20 lg:opacity-100" preserveAspectRatio="none" viewBox="0 0 1000 1000">
         <path d="M750,0 Q730,100 710,200 T650,400 T580,600 T520,800 T450,1000 L440,1000 L740,0 Z" fill="#ffffff" />
       </svg>
 
       {/* Floating Clouds */}
-      <Cloud className="hero-cloud-1 absolute top-[15%] left-[10%] lg:left-[60%] text-white/50 lg:text-white/80 w-24 h-24 lg:w-32 lg:h-32 z-10" fill="currentColor" />
-      <Cloud className="hero-cloud-2 absolute top-[25%] left-[80%] text-white/30 lg:text-white/50 w-16 h-16 lg:w-20 lg:h-20 z-10" fill="currentColor" />
-      <Cloud className="hero-cloud-3 absolute top-[70%] left-[5%] lg:left-[40%] text-white/10 w-32 h-32 lg:w-40 lg:h-40 z-10" fill="currentColor" />
+      <Cloud className="hero-cloud-1 absolute top-[15%] left-[10%] lg:left-[60%] text-white/50 lg:text-white/80 w-16 h-16 lg:w-32 lg:h-32 z-10" fill="currentColor" />
+      <Cloud className="hero-cloud-2 absolute top-[25%] left-[80%] text-white/30 lg:text-white/50 w-12 h-12 lg:w-20 lg:h-20 z-10" fill="currentColor" />
+      <Cloud className="hero-cloud-3 absolute top-[60%] lg:top-[70%] left-[5%] lg:left-[40%] text-white/10 w-24 h-24 lg:w-40 lg:h-40 z-10" fill="currentColor" />
 
       {/* Dotted Airplane Path */}
       <svg className="hidden lg:block absolute top-0 left-0 w-full h-full z-10 pointer-events-none" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <path d="M 200 400 Q 500 200 850 500" fill="transparent" stroke="white" strokeWidth="4" strokeDasharray="15 20" strokeLinecap="round" opacity="0.4" />
       </svg>
-      <Plane className="absolute top-[16%] lg:top-[14%] left-[15%] lg:left-[25%] text-white w-8 h-8 lg:w-12 lg:h-12 -rotate-45 z-[40] drop-shadow-xl" fill="currentColor" />
+      <Plane className={`absolute top-[6%] right-[5%] md:right-auto md:left-[10%] lg:top-[14%] lg:left-[25%] text-white w-8 h-8 md:w-6 md:h-6 lg:w-12 lg:h-12 -rotate-45 z-[40] drop-shadow-xl opacity-60 md:opacity-100 ${lang === 'ar' ? 'md:left-auto md:right-[10%] lg:right-[25%]' : ''}`} fill="currentColor" />
 
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        
+      <div className="relative z-20 max-w-7xl mx-auto w-full px-4 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-center">
+
         {/* Content */}
-        <div className="lg:col-span-6 text-left relative z-30 pt-10 pb-10 lg:pb-20">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
+        <div className={`lg:col-span-6 text-left relative z-30 pt-0 pb-2 lg:pt-10 lg:pb-20 -mt-8 md:mt-0 ${lang === 'ar' ? 'text-right' : ''}`}>
+          <motion.div
+            initial={{ opacity: 0, x: lang === 'ar' ? 20 : -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="hero-text inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-6 text-brand-yellow font-outfit font-black text-xs tracking-widest uppercase italic"
+            className={`hero-text hidden md:inline-flex items-center gap-1.5 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-3 md:mb-6 ${badgeTextClass} font-outfit font-black text-[10px] md:text-xs tracking-widest uppercase italic`}
           >
-            <CalendarCheck className="w-5 h-5 text-brand-green" />
-            <span>EXPERT VISA ASSISTANCE</span>
+            <CalendarCheck className={`w-3.5 h-3.5 md:w-5 md:h-5 ${badgeIconClass}`} />
+            <span>{lang === 'ar' ? 'مساعدة خبراء التأشيرات' : 'EXPERT VISA ASSISTANCE'}</span>
           </motion.div>
-          <h1 className="hero-text text-white font-outfit font-black text-4xl md:text-6xl lg:text-8xl leading-[1] mb-6 drop-shadow-2xl tracking-tighter">
-            BOOK YOUR <br className="hidden md:block" />
-            SCHENGEN <br className="hidden md:block" />
-            <span className="text-brand-yellow font-script text-[1.25em] font-normal inline-block mt-4 drop-shadow-xl">Appointment</span> 
+          <h1 className={`hero-text text-white font-outfit font-black text-[2.75rem] sm:text-5xl md:text-6xl lg:text-8xl leading-[1.05] md:leading-[1.1] mb-8 md:mb-10 drop-shadow-2xl tracking-tighter ${lang === 'ar' ? 'font-arabic' : ''}`}>
+            <span className="text-[1.75rem] sm:text-[1em] block mb-1 sm:mb-0 opacity-90 tracking-wide [word-spacing:0.2em] sm:[word-spacing:normal]">
+              {(lang === 'ar' ? config.hero.ar?.titlePrefix : config.hero.titlePrefix)?.toUpperCase()}
+            </span>
+            <span className={`sm:inline-block ${(config.countryName === 'China' || config.countryName === 'Japan') ? '' : 'block'}`}>
+              {(lang === 'ar' ? config.hero.ar?.titleHighlight : config.hero.titleHighlight)?.toUpperCase()}
+            </span>
+            <span className={`${badgeTextClass} font-script text-[1.2em] md:text-[1.25em] font-normal inline-block mt-1 sm:mt-0 md:mt-4 ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'ml-4' : ''} drop-shadow-xl p-1`}>
+              {lang === 'ar' ? config.hero.ar?.titleSuffix : config.hero.titleSuffix}
+            </span>
+            <span className="ml-4 md:ml-8 inline-block align-middle translate-y-[-2px] md:translate-y-[-4px]">
+              <div className="w-11 h-11 md:w-16 md:h-16 rounded-full border-[3px] border-white/50 p-0.5 bg-white/15 backdrop-blur-md shadow-[0_0_30px_rgba(255,255,255,0.25),0_0_60px_rgba(255,255,255,0.1)] overflow-hidden flex items-center justify-center">
+                {config.countryName === 'Indonesia' && <img src="https://flagcdn.com/w160/id.png" alt="Indonesia" className="w-full h-full object-cover rounded-full" />}
+                {config.countryName === 'Japan' && <img src="https://flagcdn.com/w160/jp.png" alt="Japan" className="w-full h-full object-cover rounded-full" />}
+                {config.countryName === 'China' && <img src="https://flagcdn.com/w160/cn.png" alt="China" className="w-full h-full object-cover rounded-full" />}
+                {config.countryName === 'Schengen' && <img src="https://flagcdn.com/w160/eu.png" alt="Schengen" className="w-full h-full object-cover rounded-full" />}
+              </div>
+            </span>
           </h1>
-          <p className="hero-text text-white/80 text-base md:text-xl font-outfit font-bold max-w-lg mb-10 leading-relaxed tracking-wide">
-            Fast slot booking and expert document review for your European journey from Dubai.
-          </p>
-          <div className="hero-text flex flex-col sm:flex-row gap-4">
-            <a 
+          <div className={`hero-text hidden lg:grid grid-cols-2 gap-2.5 md:gap-3 mb-6 md:mb-10 max-w-lg ${lang === 'ar' ? 'dir-rtl' : ''}`}>
+            {(config.countryName === 'Indonesia' ? [
+              { en: "Submission Handling", ar: "معالجة التقديم" },
+              { en: "Visa Specialist", ar: "متخصص فيزا" },
+              { en: "10 Years Experience", ar: "10 سنوات خبرة" },
+              { en: "Dedicated Assistance", ar: "مساعدة مخصصة" },
+            ] : (config.countryName === 'Japan' || config.countryName === 'China') ? [
+              { en: "Passport Collection & Return", ar: "استلام وتسليم الجواز" },
+              { en: "Visa Specialist", ar: "متخصص فيزا" },
+              { en: "10 Years Experience", ar: "10 سنوات خبرة" },
+              { en: "Dedicated Assistance", ar: "مساعدة مخصصة" },
+            ] : [
+              { en: "Fast Processing", ar: "معالجة سريعة" },
+              { en: "High Success Rate", ar: "نسبة نجاح عالية" },
+              { en: "Expert Guidance", ar: "إرشاد الخبراء" },
+              { en: "24/7 Support", ar: "دعم 24/7" },
+            ]).map((feat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.7 + i * 0.12, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ scale: 1.04, y: -3 }}
+                className={`flex items-center gap-2.5 md:gap-3 bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] rounded-2xl md:rounded-2xl px-4 py-3 md:px-5 md:py-3.5 cursor-default group transition-all hover:bg-white/[0.15] hover:border-white/25 hover:shadow-[0_8px_32px_rgba(255,255,255,0.06)] ${lang === 'ar' ? 'flex-row-reverse text-right' : 'text-left'}`}
+              >
+                <span className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full shrink-0 shadow-[0_0_12px_currentColor] group-hover:shadow-[0_0_20px_currentColor] transition-shadow ${config.countryName === 'Indonesia' ? 'bg-emerald-400' :
+                  config.countryName === 'Japan' ? 'bg-[#FF8000]' :
+                    config.countryName === 'China' ? 'bg-[#FF8000]' :
+                      'bg-brand-yellow'
+                  }`}></span>
+                <span className={`text-white font-outfit font-bold text-[12px] md:text-sm tracking-wide uppercase leading-tight group-hover:text-white transition-colors ${lang === 'ar' ? 'font-arabic' : ''}`}>
+                  {lang === 'ar' ? feat.ar : feat.en}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+          <div className="hero-text flex flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+            <a
               href="https://wa.me/971544388038"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-brand-green hover:bg-brand-yellow text-white font-outfit font-black py-5 px-10 rounded-2xl shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-3 text-lg uppercase tracking-widest cursor-pointer"
+              className={`${btnClass} font-outfit font-black py-3 px-8 md:py-5 md:px-10 rounded-xl md:rounded-2xl shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-2 text-sm md:text-lg uppercase tracking-widest cursor-pointer md:flex-none`}
             >
-              Book Now
-              <MoveRight className="w-6 h-6" />
+              {lang === 'ar' ? 'احجز الآن' : 'Book Now'}
+              <MoveRight className={`w-5 h-5 md:w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
             </a>
-            <a 
-              href="https://wa.me/971544388038"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white font-outfit font-black py-5 px-8 rounded-2xl transition-all flex items-center justify-center text-lg uppercase tracking-widest cursor-pointer"
+            <a
+              href="#appointments"
+              className="hidden md:flex bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white font-outfit font-black py-3 px-4 md:py-5 md:px-8 rounded-xl md:rounded-2xl transition-all items-center justify-center text-sm md:text-lg uppercase tracking-widest cursor-pointer flex-1 md:flex-none"
             >
-              Services
+              {lang === 'ar' ? 'خدماتنا' : 'Services'}
             </a>
           </div>
         </div>
 
-        {/* Character */}
-        <div className="lg:col-span-6 relative h-[400px] md:h-[600px] flex items-center justify-center">
-          <div className="relative w-full h-full">
-            <img 
-              src="/images/traveler_girl_suitcase_1773825084497.png" 
-              alt="Traveler" 
-              className="hero-image absolute inset-0 w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)] mix-blend-multiply z-20"
-            />
-            {/* High-visibility Trust Badge */}
-            <motion.div 
-              initial={{ scale: 0, rotate: -15 }}
-              animate={{ scale: 1, rotate: 10 }}
-              transition={{ delay: 1.2, type: "spring", stiffness: 100 }}
-              className="absolute top-[-5%] right-[5%] md:right-[-5%] bg-white/20 backdrop-blur-3xl border-2 border-white/40 text-white w-32 h-32 md:w-52 md:h-52 rounded-full flex flex-col items-center justify-center shadow-[0_25px_60px_rgba(0,0,0,0.5)] z-[40] p-6 text-center group"
+        {/* Character/Image Container */}
+        <div className={`lg:col-span-6 relative flex items-center justify-center mt-4 lg:mt-0 ${config.countryName === 'Japan' ? 'h-[250px] sm:h-[400px] md:h-[650px]' :
+          config.countryName === 'China' ? 'h-[320px] sm:h-[450px] md:h-[600px]' :
+            'h-[300px] sm:h-[400px] md:h-[600px]'
+          }`}>
+          <div className={`relative w-full h-full mx-auto ${config.countryName === 'China' ? 'max-w-xs sm:max-w-sm md:max-w-md lg:mr-0 lg:ml-auto' :
+            config.countryName === 'Japan' ? 'max-w-xs sm:max-w-sm md:max-w-lg' :
+              config.countryName === 'Indonesia' ? 'max-w-[300px] sm:max-w-sm md:max-w-md lg:mr-0 lg:ml-auto' :
+                'max-w-[280px] sm:max-w-xs md:max-w-none'
+            }`}>
+
+            {/* Indonesia Specific Enhanced UI */}
+            {config.countryName === 'Indonesia' && (
+              <div className="relative w-full h-full flex items-center justify-center p-4">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-emerald-400/5 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="relative z-20 group">
+                  <div className="absolute -inset-4 bg-white/5 backdrop-blur-sm rounded-[3rem] border border-white/20 -z-10 transform -rotate-3"></div>
+                  <img
+                    src={getImagePath(config.hero.image)}
+                    alt="Explore Indonesia"
+                    className="hero-image w-full h-[300px] sm:h-[380px] md:h-[480px] object-cover rounded-[3rem] shadow-[0_30px_60px_rgba(0,0,0,0.5)] border-4 border-white/10"
+                  />
+                  <div className="absolute -bottom-4 right-10 w-40 h-3 bg-emerald-400/20 rounded-full blur-md"></div>
+                </div>
+              </div>
+            )}
+
+            {/* China Specific Enhanced UI - The Forbidden Gate */}
+            {config.countryName === 'China' && (
+              <div className="relative w-full h-full flex items-center justify-center p-4">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-red-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+                {/* Outermost Modern Portal Frame */}
+                <div className="hero-china-portal absolute inset-0 border-[1px] border-white/20 bg-white/5 backdrop-blur-[2px] rounded-[3rem] transform rotate-3 z-0 shadow-2xl scale-105"></div>
+
+                {/* Secondary Offset Frame (Modern Gold accent) */}
+                <div className="hero-china-portal absolute inset-0 border-2 border-[#FF8000]/20 bg-transparent rounded-[2.5rem] transform -rotate-2 z-10 translate-x-2 translate-y-2"></div>
+
+                {/* Primary Image Container (Geometric Octagon-ish) */}
+                <div className="hero-china-portal relative z-20 w-full h-[320px] sm:h-[450px] md:h-[550px] overflow-hidden rounded-[4rem] border-4 border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.7)] group">
+                  <img
+                    src={getImagePath(config.hero.image)}
+                    alt="Explore China"
+                    className="hero-image w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  {/* Artistic Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-transparent to-red-900/40 opacity-70 group-hover:opacity-50 transition-opacity duration-700"></div>
+                </div>
+
+                {/* Modern Geometric Accents */}
+                <div className="hero-china-accents absolute -top-8 -left-8 w-20 h-20 border-l border-t border-white/40 rounded-tl-[2rem] z-30 opacity-60"></div>
+                <div className="hero-china-accents absolute -bottom-8 -right-8 w-32 h-32 border-r border-b border-[#FF8000]/40 rounded-br-[3rem] z-30 opacity-60"></div>
+
+                {/* Subtle Floating Orbs */}
+                <div className="hero-china-accents absolute top-[10%] right-[-10%] w-12 h-12 bg-[#FF8000]/10 rounded-full blur-xl z-30 animate-pulse"></div>
+              </div>
+            )}
+
+            {/* Default/Japan UI */}
+            {(config.countryName !== 'Indonesia' && config.countryName !== 'China') && (
+              <img
+                src={getImagePath(config.countryName === 'Schengen' ? "/images/traveler_girl_suitcase_1773825084497.png" : config.hero.image)}
+                alt={`${config.countryName} Traveler`}
+                className={`hero-image absolute inset-0 w-full h-full filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)] z-20 ${config.countryName === 'Schengen' ? 'object-contain mix-blend-multiply' :
+                  config.countryName === 'Japan' ? 'object-cover rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.4)] border shadow-white/10 border-white/20 transform rotate-2' :
+                    'object-cover rounded-full lg:rounded-[3rem] shadow-2xl border-4 border-white/20'
+                  }`}
+              />
+            )}
+
+            {/* Japan Offset Glass Frame Effect */}
+            {config.countryName === 'Japan' && (
+              <div className="absolute inset-0 w-full h-full border border-white/40 bg-white/10 backdrop-blur-sm rounded-2xl transform -rotate-3 z-10 translate-x-4 translate-y-4 shadow-xl pointer-events-none"></div>
+            )}
+          </div>
+        </div>
+
+        {/* Mobile-only 4-Point Features Grid (Below the image) */}
+        <div className={`hero-text lg:hidden grid grid-cols-2 gap-2.5 md:gap-3 mt-12 mb-6 max-w-lg mx-auto ${lang === 'ar' ? 'dir-rtl' : ''}`}>
+          {(config.countryName === 'Indonesia' ? [
+            { en: "Submission Handling", ar: "معالجة التقديم" },
+            { en: "Visa Specialist", ar: "متخصص فيزا" },
+            { en: "10 Years Experience", ar: "10 سنوات خبرة" },
+            { en: "Dedicated Assistance", ar: "مساعدة مخصصة" },
+          ] : (config.countryName === 'Japan' || config.countryName === 'China') ? [
+            { en: "Passport Collection & Return", ar: "استلام وتسليم الجواز" },
+            { en: "Visa Specialist", ar: "متخصص فيزا" },
+            { en: "10 Years Experience", ar: "10 سنوات خبرة" },
+            { en: "Dedicated Assistance", ar: "مساعدة مخصصة" },
+          ] : [
+            { en: "Fast Processing", ar: "معالجة سريعة" },
+            { en: "High Success Rate", ar: "نسبة نجاح عالية" },
+            { en: "Expert Guidance", ar: "إرشاد الخبراء" },
+            { en: "24/7 Support", ar: "دعم 24/7" },
+          ]).map((feat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.7 + i * 0.12, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ scale: 1.04, y: -3 }}
+              className={`flex items-center gap-2.5 md:gap-3 bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] rounded-2xl md:rounded-2xl px-4 py-3 md:px-5 md:py-3.5 cursor-default group transition-all hover:bg-white/[0.15] hover:border-white/25 hover:shadow-[0_8px_32px_rgba(255,255,255,0.06)] ${lang === 'ar' ? 'flex-row-reverse text-right' : 'text-left'}`}
             >
-              <ShieldCheck className="w-10 h-10 md:w-16 h-16 text-brand-yellow mb-2 group-hover:scale-125 transition-transform" />
-              <span className="text-[10px] md:text-xs font-outfit font-black uppercase tracking-widest text-white/80 leading-tight">100% Trusted</span>
-              <span className="text-xs md:text-lg font-bold text-brand-yellow font-script leading-none">Professional Guide</span>
-              <div className="absolute inset-0 rounded-full border-4 border-brand-green/30 animate-pulse group-hover:animate-none"></div>
+              <span className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full shrink-0 shadow-[0_0_12px_currentColor] group-hover:shadow-[0_0_20px_currentColor] transition-shadow ${config.countryName === 'Indonesia' ? 'bg-emerald-400' :
+                config.countryName === 'Japan' ? 'bg-[#FF8000]' :
+                  config.countryName === 'China' ? 'bg-[#FF8000]' :
+                    'bg-brand-yellow'
+                }`}></span>
+              <span className={`text-white font-outfit font-bold text-[12px] md:text-sm tracking-wide uppercase leading-tight group-hover:text-white transition-colors ${lang === 'ar' ? 'font-arabic' : ''}`}>
+                {lang === 'ar' ? feat.ar : feat.en}
+              </span>
             </motion.div>
-          </div>
+          ))}
         </div>
-
       </div>
 
       {/* Bottom transition */}

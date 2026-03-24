@@ -5,7 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:schengen": "vite --mode schengen",
+    "dev:indonesia": "vite --mode indonesia",
+    "dev:china": "vite --mode china",
+    "dev:japan": "vite --mode japan",
     "build": "tsc -b && vite build",
+    "build:schengen": "tsc -b && vite build --mode schengen",
+    "build:indonesia": "tsc -b && vite build --mode indonesia",
+    "build:china": "tsc -b && vite build --mode china",
+    "build:japan": "tsc -b && vite build --mode japan",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -1,0 +1,111 @@
+# SEO Content Revision Task: Visa Landing Pages (China, Indonesia, Japan)
+
+
+## 1. INDONESIA VISA CONTENT (Specific)
+
+### Meta Information
+- Meta Title (Current): "Indonesia Visa Application from Dubai | Travnook"
+- Meta Description (Current): "Getting an Indonesia visa from Dubai is now super easy and quick. Fast Processing Guaranteed."
+
+### Hero Section (Main Header)
+- Title Prefix: "Apply for"
+- Title Highlight (Main Keyword): "Indonesia"
+- Title Suffix: "Visa"
+- Subtitle: "Getting an Indonesia visa from Dubai is now super easy and quick. At Travnook, we strive to provide the best Indonesia visa assistance."
+
+### About Section
+- Section Title: "Indonesia Visa from Dubai"
+- Paragraph 1: "Getting an Indonesia visa from Dubai is now super easy and quick. At Travnook, we strive to provide the best Indonesia visa assistance in Dubai."
+- Paragraph 2: "Ensuring a seamless and stress-free application process. Apply for an Indonesian visa from Dubai today!"
+
+### Plan/Service Details
+- Plan Title: "Appointments Mode"
+- Plan Description: "Complete processing and guidance for your Indonesia Visa application. Reliable, fast, and secure."
+- Features: "Expert Guidance", "Fast Processing", "Secure Handling", "End-to-end Support"
+
+---
+
+## 2. CHINA VISA CONTENT (Specific)
+
+### Meta Information
+- Meta Title (Current): "China Visa Application from Dubai | Travnook"
+- Meta Description (Current): "Apply for a China visa from Dubai with our experts. High success rate guaranteed."
+
+### Hero Section (Main Header)
+- Title Prefix: "Apply for"
+- Title Highlight (Main Keyword): "China"
+- Title Suffix: "Visa"
+- Subtitle: "China tourist visa applications can be complex. Apply with our experts who have 10+ years of experience from Dubai."
+
+### About Section
+- Section Title: "China Visa from Dubai"
+- Paragraph 1: "China tourist visa applications can be complex if not done with perfection. Apply China visa from Dubai with experts. At Travnook, we understand the China visa application process in the UAE."
+- Paragraph 2: "We have visa consultants with over 10 years of experience in handling tourist visas to China from Dubai. We are here to guide you through every step, ensuring a high success rate."
+
+### Plan/Service Details
+- Plan Title: "Appointments Mode"
+- Plan Description: "Complete application guidance and processing for Chinese Tourist, Business, or Family Visit visas."
+- Features: "Precision Checking", "High Success Rate", "Expert Consultants", "Dedicated Support"
+
+---
+
+## 3. JAPAN VISA CONTENT (Specific)
+
+### Meta Information
+- Meta Title (Current): "Japan Visa Application from Dubai | Travnook"
+- Meta Description (Current): "Get your Japan visa from Dubai with Travnook. Fast processing, expert guidance, and hassle-free scheduling."
+
+### Hero Section (Main Header)
+- Title Prefix: "Apply for"
+- Title Highlight (Main Keyword): "Japan"
+- Title Suffix: "Visa"
+- Subtitle: "Planning to get a Japan visa from Dubai? Apply for a Japan visa from Dubai with Travnook without delay. With in-depth knowledge of Japanese visa requirements and processing guidelines, we help you secure your visa efficiently."
+
+### About Section
+- Section Title: "Japan Visa from Dubai"
+- Paragraph 1: "Planning to get a Japan visa from Dubai? Apply for a Japan visa from Dubai with Travnook without delay."
+- Paragraph 2: "With in-depth knowledge of Japanese visa requirements and processing guidelines, we help you secure your visa efficiently. Get your Japan visa on time and without any hassle. “Discover the world’s hidden treasures with us.”"
+
+### Plan/Service Details
+- Plan Title: "Appointments Mode"
+- Plan Description: "Complete processing and guidance for your Japan Visa application. Reliable, fast, and secure."
+- Features: "Expert Guidance", "Fast Processing", "Secure Handling", "End-to-end Support"
+
+---
+
+## 4. UNIVERSAL CONTENT (Shared across all pages)
+
+The following text is shared across the landing pages and needs to be optimized to be highly persuasive while remaining broad enough to apply to any visa (Schengen, China, Indonesia).
+
+### Trust Indicators (Badges)
+- "Proven Track Record"
+- "A Decade of Service"
+- "Transparent Pricing"
+- "Comprehensive Support"
+
+### Global Guarantees (Why Choose Us)
+- Section Title: "Why Choose Our Service?"
+- Subtitle: "Speed, clarity, and total privacy — in one seamless process."
+- Guarantee 1 Title: "Expedited Search"
+- Guarantee 1 Desc: "We diligently search for the earliest available appointment slots."
+- Guarantee 2 Title: "Personalised Assistance"
+- Guarantee 2 Desc: "From booking to review, we strive for efficient processing."
+- Guarantee 3 Title: "Responsive Service"
+- Guarantee 3 Desc: "Our team provides responsive, UAE-wide support."
+- Guarantee 4 Title: "Transparent Process"
+- Guarantee 4 Desc: "We keep you informed every step of the way."
+- Guarantee 5 Title: "Total Privacy"
+- Guarantee 5 Desc: "Discretion and confidentiality is our priority."
+
+### Generic Process Steps (How It Works)
+- Title: "The Journey"
+- Step 1 Title: "Submit Details"
+- Step 1 Desc: "Fill out the initial inquiry form with your travel details."
+- Step 2 Title: "Document Review"
+- Step 2 Desc: "Our team reviews your documents for completeness and accuracy."
+- Step 3 Title: "Slot Booking"
+- Step 3 Desc: "We diligently search and secure the earliest appointment slot."
+- Step 4 Title: "Application Preparation"
+- Step 4 Desc: "We help prepare your final application for submission."
+- Step 5 Title: "Visa Processing"
+- Step 5 Desc: "Attend your appointment and wait for the successful visa processing."

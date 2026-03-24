@@ -1,0 +1,11 @@
+# For Japan
+/japan/* /japan/index.html 200
+
+# For China
+/china/* /china/index.html 200
+
+# For Indonesia
+/indonesia/* /indonesia/index.html 200
+
+# For Schengen (Root)
+/* /index.html 200

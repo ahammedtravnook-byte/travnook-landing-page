@@ -1,195 +1,258 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { useMemo, useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { FileText, ClipboardCheck, UserCheck, CheckCircle2, Plane, Send, Sparkles } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ClipboardCheck, CalendarRange, MousePointer2, PlaneTakeoff, Sparkles } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { getCountryConfig } from '../data/countryConfig';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const steps = [
-  {
-    icon: <ClipboardCheck className="w-10 h-10" />,
-    title: "Document Review",
-    desc: "Our experts meticulously check your documents to ensure everything is perfect for your Schengen application.",
-    color: "bg-brand-teal"
-  },
-  {
-    icon: <CalendarRange className="w-10 h-10" />,
-    title: "Slot Booking",
-    desc: "We search 24/7 for the earliest available appointments at VFS Global or TLScontact centers in the UAE.",
-    color: "bg-brand-green"
-  },
-  {
-    icon: <MousePointer2 className="w-10 h-10" />,
-    title: "Form Assistance",
-    desc: "Professional guidance in filling out multi-page visa application forms with 100% accuracy.",
-    color: "bg-brand-teal"
-  },
-  {
-    icon: <PlaneTakeoff className="w-12 h-12" />,
-    title: "Ready to Fly!",
-    desc: "Receive your confirmed appointment and thorough preparation for your embassy interview.",
-    color: "bg-brand-yellow"
+const getColorForIdx = (idx: number, country: string) => {
+  if (country === 'Schengen') {
+    return idx % 2 === 0 ? "bg-brand-teal" : "bg-brand-yellow";
+  } else if (country === 'Indonesia') {
+    return idx % 2 === 0 ? "bg-emerald-900" : "bg-emerald-500";
+  } else if (country === 'Japan') {
+    return idx % 2 === 0 ? "bg-slate-900" : "bg-sky-500";
+  } else {
+    return idx % 2 === 0 ? "bg-teal-900" : "bg-teal-500";
   }
-];
+};
 
-const HowItWorks = () => {
+interface HowItWorksProps {
+  lang?: 'en' | 'ar';
+}
+
+const HowItWorks = ({ lang = 'en' }: HowItWorksProps) => {
+  const config = useMemo(() => getCountryConfig(), []);
   const containerRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
-  const [hasBlasted, setHasBlasted] = useState(false);
+  const isAlt = config.countryName !== 'Schengen';
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end end"]
-  });
+  const howItWorksSteps = useMemo(() => {
+    return (config.steps || []).map(step => ({
+      title: lang === 'ar' ? step.ar?.title || step.title : step.title,
+      desc: lang === 'ar' ? step.ar?.desc || step.desc : step.desc
+    }));
+  }, [lang, config.steps]);
 
-  const pathLength = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  const icons = [
+    <FileText className="w-6 h-6 md:w-8 md:h-8" />,
+    <ClipboardCheck className="w-6 h-6 md:w-8 md:h-8" />,
+    <UserCheck className="w-6 h-6 md:w-8 md:h-8" />,
+    <Send className="w-6 h-6 md:w-8 md:h-8" />,
+    <CheckCircle2 className="w-6 h-6 md:w-8 md:h-8" />
+  ];
 
-  // Trigger Confetti Blast on the last step
   useEffect(() => {
-    const unsub = scrollYProgress.on("change", (latest) => {
-      if (latest > 0.95 && !hasBlasted) {
-        setHasBlasted(true);
-        confetti({
-          particleCount: 150,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ['#8ec436', '#f4a31a', '#0d4a41', '#ffffff']
+    if (!containerRef.current || isAlt) return;
+
+    const ctx = gsap.context(() => {
+      if (pathRef.current) {
+        const length = pathRef.current.getTotalLength();
+        gsap.set(pathRef.current, { strokeDasharray: length, strokeDashoffset: length });
+        gsap.to(pathRef.current, {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: 1
+          }
         });
       }
-    });
-    return () => unsub();
-  }, [scrollYProgress, hasBlasted]);
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [isAlt]);
+
+  /* ──────────────────────────────────────────────
+     ALT LAYOUT — Indonesia / China
+     Horizontal step-progress bar (desktop)
+     Vertical cards (mobile)
+     ────────────────────────────────────────────── */
+  if (isAlt) {
+    const isJapan = config.countryName === 'Japan';
+    const isIndo = config.countryName === 'Indonesia';
+    const accentColor = isJapan ? 'text-[#FF8000]' : isIndo ? 'text-emerald-500' : 'text-teal-500';
+    const dotColor = isJapan ? 'bg-[#FF8000]' : isIndo ? 'bg-emerald-500' : 'bg-teal-500';
+    const lineBg = isJapan ? 'bg-[#FF9933]/50' : isIndo ? 'bg-emerald-200' : 'bg-teal-200';
+    const cardHoverBorder = isJapan ? 'hover:border-[#FF8000]/50' : isIndo ? 'hover:border-emerald-200' : 'hover:border-teal-200';
+
+    return (
+      <section className="relative py-14 md:py-24 bg-[#F8F9F9] overflow-hidden" id="process">
+        <div className="max-w-6xl mx-auto px-4 md:px-8">
+
+          {/* Header */}
+          <div className="text-center mb-10 md:mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className={`inline-flex items-center gap-2 px-4 py-1.5 bg-white rounded-full ${config.themeColor.primary} shadow-sm font-outfit font-black text-[10px] tracking-[0.2em] mb-4 border border-gray-100 uppercase`}
+            >
+              <Sparkles className={`w-3.5 h-3.5 ${accentColor}`} />
+              <span>{lang === 'ar' ? 'إجراءاتنا' : 'OUR PROCESS'}</span>
+            </motion.div>
+
+            <h2 className={`text-3xl md:text-5xl font-sora font-black ${config.themeColor.primary} tracking-tighter ${lang === 'ar' ? 'font-arabic' : ''}`}>
+              {lang === 'ar' ? (
+                <>ابدأ <span className={`${config.themeColor.accent} font-script font-normal text-[1.2em]`}>رحلتك</span> معانا</>
+              ) : (config.countryName === 'Indonesia' || config.countryName === 'Japan' || config.countryName === 'China') ? (
+                <>How the Visa <span className={`${config.themeColor.accent} font-script font-normal text-[1.2em]`}>Process Works</span></>
+              ) : (
+                <>The <span className={`${config.themeColor.accent} font-script font-normal text-[1.2em]`}>Journey</span></>
+              )}
+            </h2>
+          </div>
+
+          {/* Desktop: Horizontal step bar */}
+          <div className="hidden md:block">
+            {/* Progress line */}
+            <div className="relative mb-12">
+              <div className={`absolute top-6 left-[10%] right-[10%] h-0.5 ${lineBg}`}></div>
+              <div className="flex justify-between relative z-10 px-[5%]">
+                {howItWorksSteps.map((_, idx: number) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: idx * 0.15, type: 'spring', stiffness: 150 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col items-center"
+                  >
+                    <div className={`w-12 h-12 ${dotColor} rounded-full flex items-center justify-center text-white font-black text-lg shadow-lg`}>
+                      {idx + 1}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Step cards */}
+            <div className="grid grid-cols-5 gap-4">
+              {howItWorksSteps.map((step: any, idx: number) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -6 }}
+                  className={`bg-white rounded-2xl p-5 text-center border border-gray-50 ${cardHoverBorder} hover:shadow-lg transition-all cursor-default group`}
+                >
+                  <div className={`w-11 h-11 mx-auto ${accentColor} bg-gray-50 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
+                    {icons[idx]}
+                  </div>
+                  <h4 className={`text-sm font-sora font-black ${config.themeColor.primary} mb-1.5 tracking-tight ${lang === 'ar' ? 'font-arabic' : ''}`}>{step.title}</h4>
+                  <p className={`text-gray-400 text-[11px] font-outfit leading-relaxed ${lang === 'ar' ? 'font-arabic opacity-80' : ''}`}>{step.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile: Vertical list */}
+          <div className="md:hidden space-y-3">
+            {howItWorksSteps.map((step: any, idx: number) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="flex gap-3 items-start bg-white rounded-xl p-4 shadow-sm border border-gray-50"
+              >
+                <div className={`w-9 h-9 shrink-0 ${dotColor} rounded-lg flex items-center justify-center text-white font-black text-sm shadow-md`}>
+                  {idx + 1}
+                </div>
+                <div className={lang === 'ar' ? 'text-right' : ''}>
+                  <h4 className={`text-sm font-sora font-black ${config.themeColor.primary} mb-1 ${lang === 'ar' ? 'font-arabic' : ''}`}>{step.title}</h4>
+                  <p className={`text-gray-400 text-xs font-outfit leading-relaxed ${lang === 'ar' ? 'font-arabic opacity-80' : ''}`}>{step.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  /* ──────────────────────────────────────────────
+     SCHENGEN LAYOUT — Original S-Curve (unchanged)
+     ────────────────────────────────────────────── */
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  const pathOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={containerRef} className="relative py-24 md:py-32 bg-[#F8F9F9] overflow-hidden" id="process">
-      
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-green/5 blur-[120px] rounded-full"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-yellow/5 blur-[120px] rounded-full"></div>
+    <section ref={containerRef} className="relative py-16 md:py-32 bg-[#F8F9F9] overflow-hidden" id="process">
+      <div className={`absolute top-0 right-0 w-96 h-96 bg-brand-green/5 blur-[120px] rounded-full`}></div>
+      <div className={`absolute bottom-0 left-0 w-96 h-96 bg-brand-yellow/5 blur-[120px] rounded-full`}></div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
-        <div className="text-center mb-24">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 relative">
+        <div className="text-center mb-16 md:mb-24">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-teal/5 rounded-full text-brand-teal font-outfit font-black text-xs tracking-[0.2em] mb-6 uppercase"
+            className={`text-4xl md:text-7xl font-bold text-brand-teal mb-4 font-sora ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
-            <Sparkles className="w-4 h-4 text-brand-green" />
-            <span>OUR SEAMLESS PROCESS</span>
-          </motion.div>
-          <h2 className="text-5xl md:text-7xl font-outfit font-black text-brand-teal tracking-tighter leading-none mb-6">
-            How It <span className="text-brand-green italic font-sora">Works</span>
-          </h2>
-          <p className="text-gray-400 font-outfit text-lg md:text-xl font-bold max-w-2xl mx-auto">
-            A precise, curved roadmap to your European adventure.
+            {lang === 'ar' ? (
+              <>خطوات <span className="text-brand-yellow font-script text-5xl md:text-8xl font-normal">الرحلة</span></>
+            ) : (
+              <>The <span className="text-brand-yellow font-script text-5xl md:text-8xl font-normal">Journey</span></>
+            )}
+          </motion.h2>
+          <p className={`text-gray-500 text-sm md:text-xl max-w-xl mx-auto font-outfit ${lang === 'ar' ? 'font-arabic' : ''}`}>
+            {lang === 'ar' ? 'خطواتك البسيطة للحصول على موعد شنغن.' : 'Your step-by-step guide to securing your Schengen appointment.'}
           </p>
         </div>
 
         <div className="relative">
-          {/* THE CURVED PATH - SVG */}
-          <div className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-px -translate-x-1/2 z-0 hidden md:block">
-            <svg 
-              className="absolute top-0 left-0 w-[400px] h-full overflow-visible -translate-x-1/2 stroke-gray-100" 
-              viewBox="0 0 400 1000" 
-              preserveAspectRatio="none"
-              fill="none"
-              strokeWidth="4"
-            >
-              {/* Vertical Path with Curves */}
-              <path 
-                d="M 200 0 C 350 150, 50 350, 200 500 C 350 650, 50 850, 200 1000" 
-                strokeLinecap="round" 
-                strokeDasharray="15 15"
-              />
-              <motion.path 
+          <div className="hidden lg:block absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-full z-0">
+            <svg viewBox="0 0 400 1000" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
+              <motion.path
                 ref={pathRef}
-                d="M 200 0 C 350 150, 50 350, 200 500 C 350 650, 50 850, 200 1000" 
-                stroke="#8ec436" 
+                d="M 200 0 C 350 150, 50 350, 200 500 C 350 650, 50 850, 200 1000"
+                stroke='#8ec436'
                 strokeWidth="8"
                 strokeLinecap="round"
-                style={{ 
-                  pathLength: pathLength 
-                }}
-                className="drop-shadow-[0_0_10px_rgba(142,196,54,0.5)]"
+                style={{ pathLength: scrollYProgress, opacity: pathOpacity }}
+                fill="transparent"
+                className='drop-shadow-[0_0_10px_rgba(142,196,54,0.5)]'
               />
             </svg>
           </div>
 
-          <div className="space-y-24 md:space-y-48 relative z-10">
-            {steps.map((step, idx) => (
-              <div 
-                key={idx} 
-                className={`flex flex-col md:flex-row items-center gap-12 ${
-                  idx % 2 !== 0 ? 'md:flex-row-reverse' : ''
-                }`}
+          <div className="relative z-10 space-y-8 md:space-y-20 max-w-5xl mx-auto">
+            {howItWorksSteps.map((step: any, idx: number) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 50, x: idx % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, y: 0, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-6 md:gap-12`}
               >
-                {/* Step Card */}
-                <motion.div 
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
-                  className="w-full md:w-1/2"
-                >
-                  <div className="group relative bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-gray-50 hover:border-brand-green/20 transition-all hover:shadow-2xl">
-                    <div className={`absolute top-0 right-0 p-8 opacity-5 text-8xl font-black font-outfit select-none`}>
-                      0{idx + 1}
-                    </div>
-                    
-                    <div className={`inline-flex items-center justify-center p-6 ${step.color} rounded-3xl text-white shadow-lg mb-8 group-hover:scale-110 transition-transform`}>
-                      {step.icon}
-                    </div>
-                    
-                    <h3 className="text-3xl md:text-4xl font-outfit font-black text-brand-teal mb-6 tracking-tight">
-                      {step.title}
-                    </h3>
-                    
-                    <p className="text-gray-500 font-outfit text-lg font-bold leading-relaxed">
-                      {step.desc}
-                    </p>
-
-                    <div className="mt-8 flex items-center gap-4">
-                      <div className="h-1 w-12 bg-gray-100 group-hover:bg-brand-green transition-colors"></div>
-                      <span className="text-xs font-outfit font-black uppercase tracking-[0.3em] text-gray-300 group-hover:text-brand-green transition-colors">
-                        Step Complete
-                      </span>
-                    </div>
+                <div className={`${getColorForIdx(idx, 'Schengen')} w-full lg:w-1/2 rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 lg:p-14 text-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] relative overflow-hidden group`}>
+                  <div className="absolute top-0 right-0 opacity-5 group-hover:rotate-12 transition-transform duration-700 p-8">
+                    <Plane className="w-24 h-24 md:w-40 md:h-40 rotate-45" />
                   </div>
-                </motion.div>
-
-                {/* Vertical Space Holder for Mobile */}
-                <div className="hidden md:block w-0 h-0"></div>
-
-                {/* Index Indicator on the curve */}
-                <div className="absolute left-[30px] md:left-1/2 -translate-x-1/2 w-12 h-12 bg-white rounded-full border-4 border-gray-100 flex items-center justify-center z-20 shadow-md">
-                   <div className="w-4 h-4 rounded-full bg-brand-green opacity-0 group-in-view:opacity-100 transition-opacity"></div>
+                  <div className="relative z-10">
+                    <div className="text-6xl md:text-[7rem] font-black text-white/10 leading-none font-outfit select-none mb-2 md:mb-4">0{idx + 1}</div>
+                    <div className="inline-block p-3 md:p-4 bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl mb-4 md:mb-6 shadow-lg">{icons[idx]}</div>
+                    <h3 className={`text-xl md:text-3xl font-black font-sora tracking-tight mb-3 md:mb-5 ${lang === 'ar' ? 'font-arabic' : ''}`}>{step.title}</h3>
+                    <p className={`text-white/60 text-sm md:text-lg font-outfit leading-relaxed ${lang === 'ar' ? 'font-arabic' : ''}`}>{step.desc}</p>
+                  </div>
                 </div>
-              </div>
+                <div className="hidden lg:block w-1/2"></div>
+              </motion.div>
             ))}
           </div>
         </div>
-
-        {/* Final Success Callout */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          className="mt-32 text-center"
-        >
-           <a 
-              href="https://wa.me/971544388038"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 bg-brand-teal text-white rounded-2xl font-outfit font-black tracking-widest text-sm shadow-2xl hover:bg-brand-green transition-all hover:-translate-y-1 cursor-pointer uppercase"
-           >
-              {hasBlasted ? "LETS BOOK NOW 🎉" : "START YOUR JOURNEY NOW"}
-           </a>
-        </motion.div>
       </div>
     </section>
   );
