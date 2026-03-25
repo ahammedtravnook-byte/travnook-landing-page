@@ -44,9 +44,6 @@ const TrustBar = ({ lang = 'en' }: Props) => {
      Marquee-style scrolling trust indicators
      ────────────────────────────────────────────── */
   if (isAlt) {
-    const gradBorder = isJapan ? 'border-sky-200/50' : isIndo ? 'border-emerald-200/50' : 'border-teal-200/50';
-    const gradBg = isJapan ? 'from-sky-50/80 to-white/80' : isIndo ? 'from-emerald-50/80 to-white/80' : 'from-teal-50/80 to-white/80';
-
     return (
       <section className="relative z-40 -mt-8 md:-mt-14 pb-6 md:pb-10 w-full px-4 hidden md:block">
 

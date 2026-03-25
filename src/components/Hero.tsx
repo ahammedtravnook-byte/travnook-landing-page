@@ -144,7 +144,81 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
 
         {/* Content */}
         <div className={`lg:col-span-6 text-center lg:text-left relative z-30 pt-4 pb-2 lg:pt-10 lg:pb-20 mt-0 ${lang === 'ar' ? 'lg:text-right' : ''}`}>
-          {/* Badge */}
+          {/* ========== MOBILE HERO LAYOUT ========== */}
+          {/* Badge: "JAPAN VISA SERVICE" with accent bar */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="hero-text md:hidden flex flex-col items-center mb-5"
+          >
+            <span className={`font-outfit font-black text-[11px] tracking-[0.25em] uppercase text-white/90 px-6 py-2 rounded-sm ${lang === 'ar' ? 'font-arabic' : ''}`}
+              style={{ background: config.countryName === 'Schengen'
+                ? 'linear-gradient(90deg, transparent, #C8A200, #E6B800, #C8A200, transparent)'
+                : config.countryName === 'Indonesia'
+                  ? 'linear-gradient(90deg, transparent, #059669, #10B981, #059669, transparent)'
+                  : 'linear-gradient(90deg, transparent, #E06800, #FF8000, #E06800, transparent)' }}
+            >
+              {lang === 'ar'
+                ? `خدمة تأشيرة ${config.countryName === 'Schengen' ? 'شنغن' : config.countryName === 'Japan' ? 'اليابان' : config.countryName === 'China' ? 'الصين' : 'إندونيسيا'}`
+                : `${config.countryName === 'Schengen' ? 'SCHENGEN' : config.countryName.toUpperCase()} VISA SERVICE`}
+            </span>
+          </motion.div>
+
+          {/* Heading: "Japan Visa Assistance" + flag */}
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.5 }}
+            className={`hero-text md:hidden text-white font-outfit font-black text-[2rem] leading-[1.15] mb-5 drop-shadow-2xl tracking-tight flex items-center justify-center gap-3 ${lang === 'ar' ? 'font-arabic flex-row-reverse' : ''}`}
+          >
+            <span>
+              {lang === 'ar'
+                ? `مساعدة تأشيرة ${config.countryName === 'Schengen' ? 'شنغن' : config.countryName === 'Japan' ? 'اليابان' : config.countryName === 'China' ? 'الصين' : 'إندونيسيا'}`
+                : `${config.countryName} Visa Assistance`}
+            </span>
+            <span className="w-10 h-10 rounded-full border-[2px] border-white/60 bg-white shadow-[0_0_20px_rgba(255,255,255,0.3)] overflow-hidden flex items-center justify-center shrink-0">
+              {config.countryName === 'Japan' && (
+                <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#fff" width="900" height="600"/><circle fill="#bc002d" cx="450" cy="300" r="180"/></svg>
+              )}
+              {config.countryName === 'China' && (
+                <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#de2910" width="900" height="600"/><g fill="#ffde00" transform="translate(150,200)"><polygon points="0,-60 17,-18 57,-23 27,7 35,48 0,25 -35,48 -27,7 -57,-23 -17,-18"/></g></svg>
+              )}
+              {config.countryName === 'Indonesia' && (
+                <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#ff0000" width="900" height="300"/><rect fill="#fff" y="300" width="900" height="300"/></svg>
+              )}
+              {config.countryName === 'Schengen' && (
+                <svg viewBox="0 0 810 540" className="w-full h-full"><rect fill="#003399" width="810" height="540"/><g fill="#ffcc00" transform="translate(405,270)">{[...Array(12)].map((_,i)=><polygon key={i} points="0,-175 7,-155 20,-155 10,-143 14,-125 0,-135 -14,-125 -10,-143 -20,-155 -7,-155" transform={`rotate(${i*30})`}/>)}</g></svg>
+              )}
+            </span>
+          </motion.h1>
+
+          {/* Three service pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.4 }}
+            className={`hero-text md:hidden flex flex-wrap justify-center gap-2 mb-2 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
+          >
+            {(config.countryName === 'Indonesia' ? [
+              { en: 'Submission Handling', ar: 'معالجة التقديم' },
+              { en: 'Document Review', ar: 'مراجعة المستندات' },
+              { en: 'End-to-End Support', ar: 'دعم شامل' },
+            ] : [
+              { en: 'Appointment Booking', ar: 'حجز المواعيد' },
+              { en: 'Document Review', ar: 'مراجعة المستندات' },
+              { en: 'End-to-End Support', ar: 'دعم شامل' },
+            ]).map((tag, i) => (
+              <span
+                key={i}
+                className={`bg-white/[0.08] backdrop-blur-sm border border-white/[0.15] text-white/80 font-outfit font-bold text-[10px] tracking-wider uppercase px-3.5 py-2 rounded-xl ${lang === 'ar' ? 'font-arabic' : ''}`}
+              >
+                {lang === 'ar' ? tag.ar : tag.en}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* ========== DESKTOP HERO LAYOUT (unchanged) ========== */}
+          {/* Desktop badge */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -154,37 +228,19 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
             <span>{lang === 'ar' ? 'مساعدة خبراء التأشيرات' : 'EXPERT VISA ASSISTANCE'}</span>
           </motion.div>
 
-          {/* Main Heading */}
-          <h1 className={`hero-text text-white font-outfit font-black text-[2.75rem] sm:text-5xl md:text-6xl lg:text-8xl leading-[1.05] md:leading-[1.1] mb-4 md:mb-6 drop-shadow-2xl tracking-tighter ${lang === 'ar' ? 'font-arabic' : ''}`}>
-            {/* "APPLY FOR" line */}
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-[1.75rem] sm:text-[1em] block mb-1 sm:mb-0 opacity-90 tracking-[0.15em] [word-spacing:0.2em] sm:[word-spacing:normal] uppercase"
-            >
+          {/* Desktop Main Heading */}
+          <h1 className={`hero-text hidden md:block text-white font-outfit font-black text-6xl lg:text-8xl leading-[1.1] mb-6 drop-shadow-2xl tracking-tighter ${lang === 'ar' ? 'font-arabic' : ''}`}>
+            <span className="text-[1em] block opacity-90 tracking-wide">
               {(lang === 'ar' ? config.hero.ar?.titlePrefix : config.hero.titlePrefix)?.toUpperCase()}
-            </motion.span>
-            {/* Country name */}
-            <motion.span
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.35, duration: 0.5 }}
-              className={`block ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'sm:inline-block' : ''} [text-shadow:_0_4px_30px_rgba(0,0,0,0.4)]`}
-            >
+            </span>
+            <span className={`${(config.countryName === 'China' || config.countryName === 'Japan') ? 'inline-block' : 'block'} [text-shadow:_0_4px_30px_rgba(0,0,0,0.4)]`}>
               {(lang === 'ar' ? config.hero.ar?.titleHighlight : config.hero.titleHighlight)?.toUpperCase()}
-            </motion.span>
-            {/* "Visa" + Flag row — centered on mobile */}
-            <motion.span
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className={`flex items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2 sm:mt-0 md:mt-4 ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'sm:inline-flex' : ''}`}
-            >
-              <span className={`${badgeTextClass} font-script text-[1.2em] md:text-[1.25em] font-normal drop-shadow-xl`}>
+            </span>
+            <span className={`inline-flex items-center gap-4 mt-4 ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'inline-flex' : 'flex'}`}>
+              <span className={`${badgeTextClass} font-script text-[1.25em] font-normal drop-shadow-xl`}>
                 {lang === 'ar' ? config.hero.ar?.titleSuffix : config.hero.titleSuffix}
               </span>
-              <div className="w-12 h-12 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full border-[2px] sm:border-[3px] border-white/60 bg-white shadow-[0_0_25px_rgba(255,255,255,0.35)] overflow-hidden flex items-center justify-center shrink-0">
+              <span className="w-16 h-16 rounded-full border-[3px] border-white/60 bg-white shadow-[0_0_25px_rgba(255,255,255,0.35)] overflow-hidden flex items-center justify-center shrink-0">
                 {config.countryName === 'Japan' && (
                   <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#fff" width="900" height="600"/><circle fill="#bc002d" cx="450" cy="300" r="180"/></svg>
                 )}
@@ -197,16 +253,16 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
                 {config.countryName === 'Schengen' && (
                   <svg viewBox="0 0 810 540" className="w-full h-full"><rect fill="#003399" width="810" height="540"/><g fill="#ffcc00" transform="translate(405,270)">{[...Array(12)].map((_,i)=><polygon key={i} points="0,-175 7,-155 20,-155 10,-143 14,-125 0,-135 -14,-125 -10,-143 -20,-155 -7,-155" transform={`rotate(${i*30})`}/>)}</g></svg>
                 )}
-              </div>
-            </motion.span>
+              </span>
+            </span>
           </h1>
 
-          {/* Subtitle line */}
+          {/* Desktop subtitle */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className={`hero-text text-white/60 font-outfit text-sm md:text-base max-w-md mx-auto lg:mx-0 mb-6 md:mb-8 leading-relaxed tracking-wide ${lang === 'ar' ? 'font-arabic' : ''}`}
+            className={`hero-text hidden md:block text-white/60 font-outfit text-base max-w-md lg:mx-0 mb-8 leading-relaxed tracking-wide ${lang === 'ar' ? 'font-arabic' : ''}`}
           >
             {lang === 'ar' ? 'نساعدك في كل خطوة من عملية التأشيرة بسهولة واحترافية' : 'We handle your entire visa process with expertise & care'}
           </motion.p>
@@ -219,7 +275,7 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
               rel="noopener noreferrer"
               className={`${btnClass} font-outfit font-black py-3.5 px-10 md:py-5 md:px-10 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all hover:scale-105 hover:shadow-[0_12px_40px_rgba(0,0,0,0.3)] flex items-center justify-center gap-2 text-sm md:text-lg uppercase tracking-widest cursor-pointer md:flex-none`}
             >
-              {lang === 'ar' ? 'احجز الآن' : 'Book Now'}
+              {lang === 'ar' ? 'ابدأ الآن' : 'Get Started'}
               <MoveRight className={`w-5 h-5 md:w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
             </a>
             <a
@@ -316,7 +372,7 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
             rel="noopener noreferrer"
             className={`${btnClass} font-outfit font-black py-3.5 px-12 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all hover:scale-105 flex items-center justify-center gap-2 text-sm uppercase tracking-widest cursor-pointer`}
           >
-            {lang === 'ar' ? 'احجز الآن' : 'Book Now'}
+            {lang === 'ar' ? 'ابدأ الآن' : 'Get Started'}
             <MoveRight className={`w-5 h-5 ${lang === 'ar' ? 'rotate-180' : ''}`} />
           </a>
         </div>

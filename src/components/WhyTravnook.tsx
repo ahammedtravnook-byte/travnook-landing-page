@@ -37,10 +37,6 @@ const WhyTravnook = ({ lang = 'en' }: WhyTravnookProps) => {
       : config.countryName === 'Japan' ? 'text-[#FF8000]'
         : 'text-teal-600';
 
-  const checkColor = config.countryName === 'Schengen' ? 'text-brand-green'
-    : config.countryName === 'Indonesia' ? 'text-emerald-500'
-      : config.countryName === 'Japan' ? 'text-[#FF8000]'
-        : 'text-teal-500';
 
   const pillBorder = config.countryName === 'Schengen' ? 'border-brand-green/20 bg-brand-green/5'
     : config.countryName === 'Indonesia' ? 'border-emerald-200 bg-emerald-50'
