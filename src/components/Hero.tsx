@@ -143,7 +143,7 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
       <div className="relative z-20 max-w-7xl mx-auto w-full px-4 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-center">
 
         {/* Content */}
-        <div className={`lg:col-span-6 text-left relative z-30 pt-0 pb-2 lg:pt-10 lg:pb-20 -mt-8 md:mt-0 ${lang === 'ar' ? 'text-right' : ''}`}>
+        <div className={`lg:col-span-6 text-left relative z-30 pt-4 pb-2 lg:pt-10 lg:pb-20 mt-0 ${lang === 'ar' ? 'text-right' : ''}`}>
           <motion.div
             initial={{ opacity: 0, x: lang === 'ar' ? 20 : -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -156,57 +156,29 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
             <span className="text-[1.75rem] sm:text-[1em] block mb-1 sm:mb-0 opacity-90 tracking-wide [word-spacing:0.2em] sm:[word-spacing:normal]">
               {(lang === 'ar' ? config.hero.ar?.titlePrefix : config.hero.titlePrefix)?.toUpperCase()}
             </span>
-            <span className={`sm:inline-block ${(config.countryName === 'China' || config.countryName === 'Japan') ? '' : 'block'}`}>
+            <span className={`block ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'sm:inline-block' : ''}`}>
               {(lang === 'ar' ? config.hero.ar?.titleHighlight : config.hero.titleHighlight)?.toUpperCase()}
             </span>
-            <span className={`${badgeTextClass} font-script text-[1.2em] md:text-[1.25em] font-normal inline-block mt-1 sm:mt-0 md:mt-4 ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'ml-4' : ''} drop-shadow-xl p-1`}>
-              {lang === 'ar' ? config.hero.ar?.titleSuffix : config.hero.titleSuffix}
-            </span>
-            <span className="ml-4 md:ml-8 inline-block align-middle translate-y-[-2px] md:translate-y-[-4px]">
-              <div className="w-11 h-11 md:w-16 md:h-16 rounded-full border-[3px] border-white/50 p-0.5 bg-white/15 backdrop-blur-md shadow-[0_0_30px_rgba(255,255,255,0.25),0_0_60px_rgba(255,255,255,0.1)] overflow-hidden flex items-center justify-center">
-                {config.countryName === 'Indonesia' && <img src="https://flagcdn.com/w160/id.png" alt="Indonesia" className="w-full h-full object-cover rounded-full" />}
-                {config.countryName === 'Japan' && <img src="https://flagcdn.com/w160/jp.png" alt="Japan" className="w-full h-full object-cover rounded-full" />}
-                {config.countryName === 'China' && <img src="https://flagcdn.com/w160/cn.png" alt="China" className="w-full h-full object-cover rounded-full" />}
-                {config.countryName === 'Schengen' && <img src="https://flagcdn.com/w160/eu.png" alt="Schengen" className="w-full h-full object-cover rounded-full" />}
+            <span className={`flex items-center gap-2 md:gap-4 mt-1 sm:mt-0 md:mt-4 ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'sm:inline-flex' : ''}`}>
+              <span className={`${badgeTextClass} font-script text-[1.2em] md:text-[1.25em] font-normal drop-shadow-xl p-1`}>
+                {lang === 'ar' ? config.hero.ar?.titleSuffix : config.hero.titleSuffix}
+              </span>
+              <div className="w-11 h-11 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full border-[2px] sm:border-[3px] border-white/50 bg-white shadow-[0_0_20px_rgba(255,255,255,0.3)] overflow-hidden flex items-center justify-center shrink-0">
+                {config.countryName === 'Japan' && (
+                  <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#fff" width="900" height="600"/><circle fill="#bc002d" cx="450" cy="300" r="180"/></svg>
+                )}
+                {config.countryName === 'China' && (
+                  <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#de2910" width="900" height="600"/><g fill="#ffde00" transform="translate(150,200)"><polygon points="0,-60 17,-18 57,-23 27,7 35,48 0,25 -35,48 -27,7 -57,-23 -17,-18"/></g></svg>
+                )}
+                {config.countryName === 'Indonesia' && (
+                  <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#ff0000" width="900" height="300"/><rect fill="#fff" y="300" width="900" height="300"/></svg>
+                )}
+                {config.countryName === 'Schengen' && (
+                  <svg viewBox="0 0 810 540" className="w-full h-full"><rect fill="#003399" width="810" height="540"/><g fill="#ffcc00" transform="translate(405,270)">{[...Array(12)].map((_,i)=><polygon key={i} points="0,-175 7,-155 20,-155 10,-143 14,-125 0,-135 -14,-125 -10,-143 -20,-155 -7,-155" transform={`rotate(${i*30})`}/>)}</g></svg>
+                )}
               </div>
             </span>
           </h1>
-          <div className={`hero-text hidden lg:grid grid-cols-2 gap-2.5 md:gap-3 mb-6 md:mb-10 max-w-lg ${lang === 'ar' ? 'dir-rtl' : ''}`}>
-            {(config.countryName === 'Indonesia' ? [
-              { en: "Submission Handling", ar: "معالجة التقديم" },
-              { en: "Visa Specialist", ar: "متخصص فيزا" },
-              { en: "10 Years Experience", ar: "10 سنوات خبرة" },
-              { en: "Dedicated Assistance", ar: "مساعدة مخصصة" },
-            ] : (config.countryName === 'Japan' || config.countryName === 'China') ? [
-              { en: "Passport Collection & Return", ar: "استلام وتسليم الجواز" },
-              { en: "Visa Specialist", ar: "متخصص فيزا" },
-              { en: "10 Years Experience", ar: "10 سنوات خبرة" },
-              { en: "Dedicated Assistance", ar: "مساعدة مخصصة" },
-            ] : [
-              { en: "Fast Processing", ar: "معالجة سريعة" },
-              { en: "High Success Rate", ar: "نسبة نجاح عالية" },
-              { en: "Expert Guidance", ar: "إرشاد الخبراء" },
-              { en: "24/7 Support", ar: "دعم 24/7" },
-            ]).map((feat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: 0.7 + i * 0.12, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ scale: 1.04, y: -3 }}
-                className={`flex items-center gap-2.5 md:gap-3 bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] rounded-2xl md:rounded-2xl px-4 py-3 md:px-5 md:py-3.5 cursor-default group transition-all hover:bg-white/[0.15] hover:border-white/25 hover:shadow-[0_8px_32px_rgba(255,255,255,0.06)] ${lang === 'ar' ? 'flex-row-reverse text-right' : 'text-left'}`}
-              >
-                <span className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full shrink-0 shadow-[0_0_12px_currentColor] group-hover:shadow-[0_0_20px_currentColor] transition-shadow ${config.countryName === 'Indonesia' ? 'bg-emerald-400' :
-                  config.countryName === 'Japan' ? 'bg-[#FF8000]' :
-                    config.countryName === 'China' ? 'bg-[#FF8000]' :
-                      'bg-brand-yellow'
-                  }`}></span>
-                <span className={`text-white font-outfit font-bold text-[12px] md:text-sm tracking-wide uppercase leading-tight group-hover:text-white transition-colors ${lang === 'ar' ? 'font-arabic' : ''}`}>
-                  {lang === 'ar' ? feat.ar : feat.en}
-                </span>
-              </motion.div>
-            ))}
-          </div>
           <div className="hero-text flex flex-row gap-3 md:gap-4 justify-center lg:justify-start">
             <a
               href="https://wa.me/971544388038"
@@ -303,43 +275,6 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
           </div>
         </div>
 
-        {/* Mobile-only 4-Point Features Grid (Below the image) */}
-        <div className={`hero-text lg:hidden grid grid-cols-2 gap-2.5 md:gap-3 mt-12 mb-6 max-w-lg mx-auto ${lang === 'ar' ? 'dir-rtl' : ''}`}>
-          {(config.countryName === 'Indonesia' ? [
-            { en: "Submission Handling", ar: "معالجة التقديم" },
-            { en: "Visa Specialist", ar: "متخصص فيزا" },
-            { en: "10 Years Experience", ar: "10 سنوات خبرة" },
-            { en: "Dedicated Assistance", ar: "مساعدة مخصصة" },
-          ] : (config.countryName === 'Japan' || config.countryName === 'China') ? [
-            { en: "Passport Collection & Return", ar: "استلام وتسليم الجواز" },
-            { en: "Visa Specialist", ar: "متخصص فيزا" },
-            { en: "10 Years Experience", ar: "10 سنوات خبرة" },
-            { en: "Dedicated Assistance", ar: "مساعدة مخصصة" },
-          ] : [
-            { en: "Fast Processing", ar: "معالجة سريعة" },
-            { en: "High Success Rate", ar: "نسبة نجاح عالية" },
-            { en: "Expert Guidance", ar: "إرشاد الخبراء" },
-            { en: "24/7 Support", ar: "دعم 24/7" },
-          ]).map((feat, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.7 + i * 0.12, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ scale: 1.04, y: -3 }}
-              className={`flex items-center gap-2.5 md:gap-3 bg-white/[0.08] backdrop-blur-xl border border-white/[0.12] rounded-2xl md:rounded-2xl px-4 py-3 md:px-5 md:py-3.5 cursor-default group transition-all hover:bg-white/[0.15] hover:border-white/25 hover:shadow-[0_8px_32px_rgba(255,255,255,0.06)] ${lang === 'ar' ? 'flex-row-reverse text-right' : 'text-left'}`}
-            >
-              <span className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full shrink-0 shadow-[0_0_12px_currentColor] group-hover:shadow-[0_0_20px_currentColor] transition-shadow ${config.countryName === 'Indonesia' ? 'bg-emerald-400' :
-                config.countryName === 'Japan' ? 'bg-[#FF8000]' :
-                  config.countryName === 'China' ? 'bg-[#FF8000]' :
-                    'bg-brand-yellow'
-                }`}></span>
-              <span className={`text-white font-outfit font-bold text-[12px] md:text-sm tracking-wide uppercase leading-tight group-hover:text-white transition-colors ${lang === 'ar' ? 'font-arabic' : ''}`}>
-                {lang === 'ar' ? feat.ar : feat.en}
-              </span>
-            </motion.div>
-          ))}
-        </div>
       </div>
 
       {/* Bottom transition */}

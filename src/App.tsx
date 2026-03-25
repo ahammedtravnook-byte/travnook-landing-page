@@ -3,6 +3,7 @@ import Lenis from 'lenis';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import WhyTravnook from './components/WhyTravnook';
 import TrustBar from './components/TrustBar';
 import About from './components/About';
 import TravelPlans from './components/TravelPlans';
@@ -160,6 +161,7 @@ function App() {
     <div className={`bg-brand-offwhite text-brand-dark min-h-screen ${fontClass} ${customSelectionColor} selection:text-white`} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <Navbar lang={lang} toggleLang={toggleLang} />
       <Hero lang={lang} />
+      <WhyTravnook lang={lang} />
       <TrustBar lang={lang} />
       <About lang={lang} />
       <TravelPlans lang={lang} />
