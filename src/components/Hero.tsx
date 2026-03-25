@@ -1,7 +1,7 @@
 import { useEffect, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import { Plane, MoveRight, Cloud, CalendarCheck } from 'lucide-react';
+import { MoveRight, Star, CalendarCheck, FileSearch, Compass } from 'lucide-react';
 import { getCountryConfig, getImagePath } from '../data/countryConfig';
 
 interface HeroProps {
@@ -33,9 +33,6 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
         gsap.to('.hero-china-accents', { y: 20, duration: 5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
       }
 
-      gsap.to('.hero-cloud-1', { x: 30, y: -10, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-      gsap.to('.hero-cloud-2', { x: -40, y: 15, duration: 5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-      gsap.to('.hero-cloud-3', { x: 20, y: 20, duration: 6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
 
     }, containerRef);
 
@@ -56,13 +53,6 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
     : config.countryName === 'Indonesia' ? 'bg-emerald-400 hover:bg-emerald-300 text-emerald-950'
       : 'bg-[#FF8000] hover:bg-[#FF9933] text-white';
 
-  const badgeIconClass = config.countryName === 'Schengen' ? 'text-brand-green'
-    : config.countryName === 'Indonesia' ? 'text-emerald-300'
-      : 'text-[#FF8000]';
-
-  const badgeTextClass = config.countryName === 'Schengen' ? 'text-brand-yellow'
-    : config.countryName === 'Indonesia' ? 'text-emerald-100'
-      : 'text-[#FF9933]';
 
   return (
     <div ref={containerRef} className={`relative z-10 w-full min-h-[90vh] lg:min-h-[110vh] ${bgClass} overflow-hidden flex items-center pt-20 lg:pt-0 pb-10 lg:pb-0`} id="home">
@@ -124,34 +114,119 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
         </div>
       )}
 
-      {/* Wavy/Ripped edge illusion */}
-      <svg className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none opacity-20 lg:opacity-100" preserveAspectRatio="none" viewBox="0 0 1000 1000">
-        <path d="M750,0 Q730,100 710,200 T650,400 T580,600 T520,800 T450,1000 L440,1000 L740,0 Z" fill="#ffffff" />
-      </svg>
 
-      {/* Floating Clouds */}
-      <Cloud className="hero-cloud-1 absolute top-[15%] left-[10%] lg:left-[60%] text-white/50 lg:text-white/80 w-16 h-16 lg:w-32 lg:h-32 z-10" fill="currentColor" />
-      <Cloud className="hero-cloud-2 absolute top-[25%] left-[80%] text-white/30 lg:text-white/50 w-12 h-12 lg:w-20 lg:h-20 z-10" fill="currentColor" />
-      <Cloud className="hero-cloud-3 absolute top-[60%] lg:top-[70%] left-[5%] lg:left-[40%] text-white/10 w-24 h-24 lg:w-40 lg:h-40 z-10" fill="currentColor" />
-
-      {/* Dotted Airplane Path */}
-      <svg className="hidden lg:block absolute top-0 left-0 w-full h-full z-10 pointer-events-none" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <path d="M 200 400 Q 500 200 850 500" fill="transparent" stroke="white" strokeWidth="4" strokeDasharray="15 20" strokeLinecap="round" opacity="0.4" />
-      </svg>
-      <Plane className={`absolute top-[6%] right-[5%] md:right-auto md:left-[10%] lg:top-[14%] lg:left-[25%] text-white w-8 h-8 md:w-6 md:h-6 lg:w-12 lg:h-12 -rotate-45 z-[40] drop-shadow-xl opacity-60 md:opacity-100 ${lang === 'ar' ? 'md:left-auto md:right-[10%] lg:right-[25%]' : ''}`} fill="currentColor" />
 
       <div className="relative z-20 max-w-7xl mx-auto w-full px-4 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-center">
 
         {/* Content */}
         <div className={`lg:col-span-6 text-center lg:text-left relative z-30 pt-4 pb-2 lg:pt-10 lg:pb-20 mt-0 ${lang === 'ar' ? 'lg:text-right' : ''}`}>
           {/* ========== MOBILE HERO LAYOUT ========== */}
-          {/* Badge: "JAPAN VISA SERVICE" with accent bar */}
+          {/* Star rating + experience bar — all countries */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="hero-text md:hidden flex flex-col items-center mb-5"
+            className={`hero-text md:hidden flex items-center justify-center gap-1.5 mb-4 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
           >
-            <span className={`font-outfit font-black text-[11px] tracking-[0.25em] uppercase text-white/90 px-6 py-2 rounded-sm ${lang === 'ar' ? 'font-arabic' : ''}`}
+            <Star className={`w-3.5 h-3.5 fill-current text-[#FFD700]`} />
+            <Star className={`w-3.5 h-3.5 fill-current text-[#FFD700]`} />
+            <span className={`font-outfit font-black text-[10px] tracking-wider uppercase text-[#FFD700]`}>
+              {lang === 'ar' ? '4.6 تقييم' : '4.6 RATING'}
+            </span>
+            <span className="text-white/30 text-[10px] mx-1">|</span>
+            <span className="font-outfit font-bold text-[10px] tracking-wider uppercase text-[#FFD700]">
+              {lang === 'ar' ? '10+ سنوات خبرة' : '10+ YEARS EXPERIENCE'}
+            </span>
+          </motion.div>
+
+          {/* Badge: "COUNTRY VISA SERVICE" + flag */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="hero-text md:hidden flex justify-center mb-5"
+          >
+            <span className={`inline-flex items-center gap-2 font-outfit font-black text-[11px] tracking-[0.2em] uppercase text-white/90 px-5 py-2 border border-white/20 rounded-md ${lang === 'ar' ? 'font-arabic flex-row-reverse' : ''}`}
+              style={{ background: config.countryName === 'Schengen'
+                ? 'linear-gradient(90deg, transparent, rgba(200,162,0,0.3), rgba(230,184,0,0.4), rgba(200,162,0,0.3), transparent)'
+                : config.countryName === 'Indonesia'
+                  ? 'linear-gradient(90deg, transparent, rgba(5,150,105,0.3), rgba(16,185,129,0.4), rgba(5,150,105,0.3), transparent)'
+                  : 'linear-gradient(90deg, transparent, rgba(224,104,0,0.3), rgba(255,128,0,0.4), rgba(224,104,0,0.3), transparent)' }}
+            >
+              {lang === 'ar'
+                ? `خدمة تأشيرة ${config.countryName === 'Schengen' ? 'شنغن' : config.countryName === 'Japan' ? 'اليابان' : config.countryName === 'China' ? 'الصين' : 'اندونيسيا'}`
+                : `${config.countryName === 'Schengen' ? 'SCHENGEN' : config.countryName.toUpperCase()} VISA SERVICE`}
+              <span className="w-5 h-5 rounded-full overflow-hidden flex items-center justify-center shrink-0">
+                {config.countryName === 'Japan' && <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#fff" width="900" height="600"/><circle fill="#bc002d" cx="450" cy="300" r="180"/></svg>}
+                {config.countryName === 'China' && <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#de2910" width="900" height="600"/><g fill="#ffde00" transform="translate(150,200)"><polygon points="0,-60 17,-18 57,-23 27,7 35,48 0,25 -35,48 -27,7 -57,-23 -17,-18"/></g></svg>}
+                {config.countryName === 'Indonesia' && <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#ff0000" width="900" height="300"/><rect fill="#fff" y="300" width="900" height="300"/></svg>}
+                {config.countryName === 'Schengen' && <svg viewBox="0 0 810 540" className="w-full h-full"><rect fill="#003399" width="810" height="540"/><g fill="#ffcc00" transform="translate(405,270)">{[...Array(12)].map((_,i)=><polygon key={i} points="0,-175 7,-155 20,-155 10,-143 14,-125 0,-135 -14,-125 -10,-143 -20,-155 -7,-155" transform={`rotate(${i*30})`}/>)}</g></svg>}
+              </span>
+            </span>
+          </motion.div>
+
+          {/* Heading: "Country Visa Assistance" */}
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.5 }}
+            className={`hero-text md:hidden text-white font-outfit font-black text-[2rem] leading-[1.15] mb-5 drop-shadow-2xl tracking-tight text-center ${lang === 'ar' ? 'font-arabic' : ''}`}
+          >
+            {lang === 'ar'
+              ? `قدم على تأشيرة ${config.countryName === 'Schengen' ? 'شنغن' : config.countryName === 'Japan' ? 'اليابان' : config.countryName === 'China' ? 'الصين' : 'اندونيسيا'}`
+              : `${config.countryName} Visa\nAssistance`}
+          </motion.h1>
+
+          {/* Three service pills with icons */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.4 }}
+            className={`hero-text md:hidden flex justify-center gap-2 mb-2 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
+          >
+            {(config.countryName === 'Indonesia' ? [
+              { en: 'Express\nService', ar: 'خدمة\nسريعة', icon: <CalendarCheck className="w-3.5 h-3.5" /> },
+              { en: 'Documents\nSubmission', ar: 'تقديم\nالمستندات', icon: <FileSearch className="w-3.5 h-3.5" /> },
+              { en: 'Full\nGuidance', ar: 'إرشاد\nكامل', icon: <Compass className="w-3.5 h-3.5" /> },
+            ] : [
+              { en: 'Appointment\nBooking', ar: 'حجز\nالمواعيد', icon: <CalendarCheck className="w-3.5 h-3.5" /> },
+              { en: 'Document\nReview', ar: 'مراجعة\nالمستندات', icon: <FileSearch className="w-3.5 h-3.5" /> },
+              { en: 'End-to-End\nSupport', ar: 'دعم\nشامل', icon: <Compass className="w-3.5 h-3.5" /> },
+            ]).map((tag, i) => (
+              <span
+                key={i}
+                className={`flex items-center gap-2 bg-white/[0.08] backdrop-blur-sm border border-white/[0.15] text-white/80 font-outfit font-bold text-[10px] tracking-wider px-3 py-2.5 rounded-xl ${lang === 'ar' ? 'font-arabic flex-row-reverse text-right' : ''}`}
+              >
+                <span className="text-white/50">{tag.icon}</span>
+                <span className="whitespace-pre-line leading-tight">{lang === 'ar' ? tag.ar : tag.en}</span>
+              </span>
+            ))}
+          </motion.div>
+
+          {/* ========== DESKTOP HERO LAYOUT ========== */}
+          {/* Desktop star rating bar */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`hero-text hidden md:flex items-center gap-2 mb-5 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
+          >
+            <Star className={`w-4 h-4 fill-current text-[#FFD700]`} />
+            <Star className={`w-4 h-4 fill-current text-[#FFD700]`} />
+            <span className={`font-outfit font-black text-xs tracking-wider uppercase text-[#FFD700]`}>
+              {lang === 'ar' ? '4.6 تقييم' : '4.6 RATING'}
+            </span>
+            <span className="text-white/30 text-xs mx-1">|</span>
+            <span className="font-outfit font-bold text-xs tracking-wider uppercase text-[#FFD700]">
+              {lang === 'ar' ? '10+ سنوات خبرة' : '10+ YEARS EXPERIENCE'}
+            </span>
+          </motion.div>
+
+          {/* Desktop badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`hero-text hidden md:flex flex-col items-start lg:items-start mb-6 ${lang === 'ar' ? 'items-end lg:items-end' : ''}`}
+          >
+            <span className={`font-outfit font-black text-xs tracking-[0.25em] uppercase text-white/90 px-8 py-2.5 rounded-sm ${lang === 'ar' ? 'font-arabic' : ''}`}
               style={{ background: config.countryName === 'Schengen'
                 ? 'linear-gradient(90deg, transparent, #C8A200, #E6B800, #C8A200, transparent)'
                 : config.countryName === 'Indonesia'
@@ -164,19 +239,19 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
             </span>
           </motion.div>
 
-          {/* Heading: "Japan Visa Assistance" + flag */}
+          {/* Desktop heading: "Japan Visa Assistance" + flag */}
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.5 }}
-            className={`hero-text md:hidden text-white font-outfit font-black text-[2rem] leading-[1.15] mb-5 drop-shadow-2xl tracking-tight flex items-center justify-center gap-3 ${lang === 'ar' ? 'font-arabic flex-row-reverse' : ''}`}
+            className={`hero-text hidden md:flex text-white font-outfit font-black text-5xl lg:text-8xl leading-[1.05] mb-6 drop-shadow-2xl tracking-tighter items-center gap-5 lg:gap-6 ${lang === 'ar' ? 'font-arabic flex-row-reverse' : ''}`}
           >
-            <span>
+            <span className="[text-shadow:_0_4px_40px_rgba(0,0,0,0.5)]">
               {lang === 'ar'
-                ? `مساعدة تأشيرة ${config.countryName === 'Schengen' ? 'شنغن' : config.countryName === 'Japan' ? 'اليابان' : config.countryName === 'China' ? 'الصين' : 'إندونيسيا'}`
+                ? `قدم على تأشيرة ${config.countryName === 'Schengen' ? 'شنغن' : config.countryName === 'Japan' ? 'اليابان' : config.countryName === 'China' ? 'الصين' : 'اندونيسيا'}`
                 : `${config.countryName} Visa Assistance`}
             </span>
-            <span className="w-10 h-10 rounded-full border-[2px] border-white/60 bg-white shadow-[0_0_20px_rgba(255,255,255,0.3)] overflow-hidden flex items-center justify-center shrink-0">
+            <span className="w-14 h-14 lg:w-[4.5rem] lg:h-[4.5rem] rounded-full border-[3px] border-white/60 bg-white shadow-[0_0_30px_rgba(255,255,255,0.4)] overflow-hidden flex items-center justify-center shrink-0 hover:scale-110 transition-transform duration-300">
               {config.countryName === 'Japan' && (
                 <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#fff" width="900" height="600"/><circle fill="#bc002d" cx="450" cy="300" r="180"/></svg>
               )}
@@ -192,80 +267,31 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
             </span>
           </motion.h1>
 
-          {/* Three service pills */}
+          {/* Desktop service pills with icons */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.4 }}
-            className={`hero-text md:hidden flex flex-wrap justify-center gap-2 mb-2 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
+            className={`hero-text hidden md:flex flex-wrap gap-3 mb-8 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
           >
             {(config.countryName === 'Indonesia' ? [
-              { en: 'Submission Handling', ar: 'معالجة التقديم' },
-              { en: 'Document Review', ar: 'مراجعة المستندات' },
-              { en: 'End-to-End Support', ar: 'دعم شامل' },
+              { en: 'Express Service', ar: 'خدمة سريعة', icon: <CalendarCheck className="w-4 h-4" /> },
+              { en: 'Documents Submission', ar: 'تقديم المستندات', icon: <FileSearch className="w-4 h-4" /> },
+              { en: 'Full Guidance', ar: 'إرشاد كامل', icon: <Compass className="w-4 h-4" /> },
             ] : [
-              { en: 'Appointment Booking', ar: 'حجز المواعيد' },
-              { en: 'Document Review', ar: 'مراجعة المستندات' },
-              { en: 'End-to-End Support', ar: 'دعم شامل' },
+              { en: 'Appointment Booking', ar: 'حجز المواعيد', icon: <CalendarCheck className="w-4 h-4" /> },
+              { en: 'Document Review', ar: 'مراجعة المستندات', icon: <FileSearch className="w-4 h-4" /> },
+              { en: 'End-to-End Support', ar: 'دعم شامل', icon: <Compass className="w-4 h-4" /> },
             ]).map((tag, i) => (
               <span
                 key={i}
-                className={`bg-white/[0.08] backdrop-blur-sm border border-white/[0.15] text-white/80 font-outfit font-bold text-[10px] tracking-wider uppercase px-3.5 py-2 rounded-xl ${lang === 'ar' ? 'font-arabic' : ''}`}
+                className={`flex items-center gap-2.5 bg-white/[0.07] backdrop-blur-md border border-white/[0.15] text-white/90 font-outfit font-bold text-sm tracking-wider px-5 py-3 rounded-2xl hover:bg-white/[0.15] hover:border-white/30 transition-all duration-300 cursor-default ${lang === 'ar' ? 'font-arabic flex-row-reverse' : ''}`}
               >
+                <span className="text-white/50">{tag.icon}</span>
                 {lang === 'ar' ? tag.ar : tag.en}
               </span>
             ))}
           </motion.div>
-
-          {/* ========== DESKTOP HERO LAYOUT (unchanged) ========== */}
-          {/* Desktop badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={`hero-text hidden md:inline-flex items-center gap-1.5 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-3 md:mb-6 ${badgeTextClass} font-outfit font-black text-[10px] md:text-xs tracking-widest uppercase italic`}
-          >
-            <CalendarCheck className={`w-3.5 h-3.5 md:w-5 md:h-5 ${badgeIconClass}`} />
-            <span>{lang === 'ar' ? 'مساعدة خبراء التأشيرات' : 'EXPERT VISA ASSISTANCE'}</span>
-          </motion.div>
-
-          {/* Desktop Main Heading */}
-          <h1 className={`hero-text hidden md:block text-white font-outfit font-black text-6xl lg:text-8xl leading-[1.1] mb-6 drop-shadow-2xl tracking-tighter ${lang === 'ar' ? 'font-arabic' : ''}`}>
-            <span className="text-[1em] block opacity-90 tracking-wide">
-              {(lang === 'ar' ? config.hero.ar?.titlePrefix : config.hero.titlePrefix)?.toUpperCase()}
-            </span>
-            <span className={`${(config.countryName === 'China' || config.countryName === 'Japan') ? 'inline-block' : 'block'} [text-shadow:_0_4px_30px_rgba(0,0,0,0.4)]`}>
-              {(lang === 'ar' ? config.hero.ar?.titleHighlight : config.hero.titleHighlight)?.toUpperCase()}
-            </span>
-            <span className={`inline-flex items-center gap-4 mt-4 ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'inline-flex' : 'flex'}`}>
-              <span className={`${badgeTextClass} font-script text-[1.25em] font-normal drop-shadow-xl`}>
-                {lang === 'ar' ? config.hero.ar?.titleSuffix : config.hero.titleSuffix}
-              </span>
-              <span className="w-16 h-16 rounded-full border-[3px] border-white/60 bg-white shadow-[0_0_25px_rgba(255,255,255,0.35)] overflow-hidden flex items-center justify-center shrink-0">
-                {config.countryName === 'Japan' && (
-                  <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#fff" width="900" height="600"/><circle fill="#bc002d" cx="450" cy="300" r="180"/></svg>
-                )}
-                {config.countryName === 'China' && (
-                  <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#de2910" width="900" height="600"/><g fill="#ffde00" transform="translate(150,200)"><polygon points="0,-60 17,-18 57,-23 27,7 35,48 0,25 -35,48 -27,7 -57,-23 -17,-18"/></g></svg>
-                )}
-                {config.countryName === 'Indonesia' && (
-                  <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#ff0000" width="900" height="300"/><rect fill="#fff" y="300" width="900" height="300"/></svg>
-                )}
-                {config.countryName === 'Schengen' && (
-                  <svg viewBox="0 0 810 540" className="w-full h-full"><rect fill="#003399" width="810" height="540"/><g fill="#ffcc00" transform="translate(405,270)">{[...Array(12)].map((_,i)=><polygon key={i} points="0,-175 7,-155 20,-155 10,-143 14,-125 0,-135 -14,-125 -10,-143 -20,-155 -7,-155" transform={`rotate(${i*30})`}/>)}</g></svg>
-                )}
-              </span>
-            </span>
-          </h1>
-
-          {/* Desktop subtitle */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className={`hero-text hidden md:block text-white/60 font-outfit text-base max-w-md lg:mx-0 mb-8 leading-relaxed tracking-wide ${lang === 'ar' ? 'font-arabic' : ''}`}
-          >
-            {lang === 'ar' ? 'نساعدك في كل خطوة من عملية التأشيرة بسهولة واحترافية' : 'We handle your entire visa process with expertise & care'}
-          </motion.p>
 
           {/* CTA Buttons — hidden on mobile, shown on desktop */}
           <div className="hero-text hidden lg:flex flex-row gap-3 md:gap-4 justify-start">
