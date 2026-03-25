@@ -15,17 +15,17 @@ const TrustBar = ({ lang = 'en' }: Props) => {
   const isIndo = config.countryName === 'Indonesia';
 
   const iconColor1 = config.countryName === 'Schengen' ? 'text-brand-yellow'
-                    : isJapan ? 'text-sky-500'
-                    : isIndo ? 'text-orange-500'
-                    : 'text-orange-500';
+    : isJapan ? 'text-sky-500'
+      : isIndo ? 'text-orange-500'
+        : 'text-orange-500';
   const iconColor2 = config.countryName === 'Schengen' ? 'text-brand-green'
-                    : isJapan ? 'text-cyan-500'
-                    : isIndo ? 'text-emerald-500'
-                    : 'text-teal-500';
+    : isJapan ? 'text-cyan-500'
+      : isIndo ? 'text-emerald-500'
+        : 'text-teal-500';
   const iconColor3 = config.countryName === 'Schengen' ? 'text-brand-teal'
-                    : isJapan ? 'text-sky-800'
-                    : isIndo ? 'text-emerald-800'
-                    : 'text-teal-800';
+    : isJapan ? 'text-sky-800'
+      : isIndo ? 'text-emerald-800'
+        : 'text-teal-800';
 
   const trustItems = lang === 'ar' ? [
     { icon: <Award className={`w-5 h-5 md:w-7 md:h-7 ${iconColor1}`} />, text: "فريق مساعدة تأشيرات خبير" },
@@ -49,35 +49,10 @@ const TrustBar = ({ lang = 'en' }: Props) => {
 
     return (
       <section className="relative z-40 -mt-8 md:-mt-14 pb-6 md:pb-10 w-full px-4 hidden md:block">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className={`bg-gradient-to-r ${gradBg} backdrop-blur-2xl border ${gradBorder} rounded-2xl md:rounded-[1.5rem] p-3 md:p-4 shadow-[0_15px_40px_rgba(0,0,0,0.06)] overflow-hidden relative`}
-          >
-            {/* Marquee animation */}
-            <div className="flex animate-marquee gap-8 md:gap-12">
-              {[...trustItems, ...trustItems, ...trustItems].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-2.5 md:gap-3 shrink-0 group cursor-default"
-                >
-                  <div className="w-9 h-9 md:w-11 md:h-11 rounded-lg md:rounded-xl bg-white shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                    {item.icon}
-                  </div>
-                  <span className={`font-outfit font-bold text-[11px] md:text-[13px] ${config.themeColor.primary} whitespace-nowrap`}>
-                    {item.text}
-                  </span>
-                  <span className="text-gray-200 mx-2 hidden md:inline">•</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
 
-        <style dangerouslySetInnerHTML={{__html: `
+
+        <style dangerouslySetInnerHTML={{
+          __html: `
           @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-33.33%); }

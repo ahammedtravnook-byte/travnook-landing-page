@@ -143,27 +143,48 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
       <div className="relative z-20 max-w-7xl mx-auto w-full px-4 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-center">
 
         {/* Content */}
-        <div className={`lg:col-span-6 text-left relative z-30 pt-4 pb-2 lg:pt-10 lg:pb-20 mt-0 ${lang === 'ar' ? 'text-right' : ''}`}>
+        <div className={`lg:col-span-6 text-center lg:text-left relative z-30 pt-4 pb-2 lg:pt-10 lg:pb-20 mt-0 ${lang === 'ar' ? 'lg:text-right' : ''}`}>
+          {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, x: lang === 'ar' ? 20 : -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
             className={`hero-text hidden md:inline-flex items-center gap-1.5 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-3 md:mb-6 ${badgeTextClass} font-outfit font-black text-[10px] md:text-xs tracking-widest uppercase italic`}
           >
             <CalendarCheck className={`w-3.5 h-3.5 md:w-5 md:h-5 ${badgeIconClass}`} />
             <span>{lang === 'ar' ? 'مساعدة خبراء التأشيرات' : 'EXPERT VISA ASSISTANCE'}</span>
           </motion.div>
-          <h1 className={`hero-text text-white font-outfit font-black text-[2.75rem] sm:text-5xl md:text-6xl lg:text-8xl leading-[1.05] md:leading-[1.1] mb-8 md:mb-10 drop-shadow-2xl tracking-tighter ${lang === 'ar' ? 'font-arabic' : ''}`}>
-            <span className="text-[1.75rem] sm:text-[1em] block mb-1 sm:mb-0 opacity-90 tracking-wide [word-spacing:0.2em] sm:[word-spacing:normal]">
+
+          {/* Main Heading */}
+          <h1 className={`hero-text text-white font-outfit font-black text-[2.75rem] sm:text-5xl md:text-6xl lg:text-8xl leading-[1.05] md:leading-[1.1] mb-4 md:mb-6 drop-shadow-2xl tracking-tighter ${lang === 'ar' ? 'font-arabic' : ''}`}>
+            {/* "APPLY FOR" line */}
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="text-[1.75rem] sm:text-[1em] block mb-1 sm:mb-0 opacity-90 tracking-[0.15em] [word-spacing:0.2em] sm:[word-spacing:normal] uppercase"
+            >
               {(lang === 'ar' ? config.hero.ar?.titlePrefix : config.hero.titlePrefix)?.toUpperCase()}
-            </span>
-            <span className={`block ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'sm:inline-block' : ''}`}>
+            </motion.span>
+            {/* Country name */}
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.35, duration: 0.5 }}
+              className={`block ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'sm:inline-block' : ''} [text-shadow:_0_4px_30px_rgba(0,0,0,0.4)]`}
+            >
               {(lang === 'ar' ? config.hero.ar?.titleHighlight : config.hero.titleHighlight)?.toUpperCase()}
-            </span>
-            <span className={`flex items-center gap-2 md:gap-4 mt-1 sm:mt-0 md:mt-4 ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'sm:inline-flex' : ''}`}>
-              <span className={`${badgeTextClass} font-script text-[1.2em] md:text-[1.25em] font-normal drop-shadow-xl p-1`}>
+            </motion.span>
+            {/* "Visa" + Flag row — centered on mobile */}
+            <motion.span
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className={`flex items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2 sm:mt-0 md:mt-4 ${(config.countryName === 'China' || config.countryName === 'Japan') ? 'sm:inline-flex' : ''}`}
+            >
+              <span className={`${badgeTextClass} font-script text-[1.2em] md:text-[1.25em] font-normal drop-shadow-xl`}>
                 {lang === 'ar' ? config.hero.ar?.titleSuffix : config.hero.titleSuffix}
               </span>
-              <div className="w-11 h-11 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full border-[2px] sm:border-[3px] border-white/50 bg-white shadow-[0_0_20px_rgba(255,255,255,0.3)] overflow-hidden flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full border-[2px] sm:border-[3px] border-white/60 bg-white shadow-[0_0_25px_rgba(255,255,255,0.35)] overflow-hidden flex items-center justify-center shrink-0">
                 {config.countryName === 'Japan' && (
                   <svg viewBox="0 0 900 600" className="w-full h-full"><rect fill="#fff" width="900" height="600"/><circle fill="#bc002d" cx="450" cy="300" r="180"/></svg>
                 )}
@@ -177,21 +198,33 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
                   <svg viewBox="0 0 810 540" className="w-full h-full"><rect fill="#003399" width="810" height="540"/><g fill="#ffcc00" transform="translate(405,270)">{[...Array(12)].map((_,i)=><polygon key={i} points="0,-175 7,-155 20,-155 10,-143 14,-125 0,-135 -14,-125 -10,-143 -20,-155 -7,-155" transform={`rotate(${i*30})`}/>)}</g></svg>
                 )}
               </div>
-            </span>
+            </motion.span>
           </h1>
-          <div className="hero-text flex flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+
+          {/* Subtitle line */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className={`hero-text text-white/60 font-outfit text-sm md:text-base max-w-md mx-auto lg:mx-0 mb-6 md:mb-8 leading-relaxed tracking-wide ${lang === 'ar' ? 'font-arabic' : ''}`}
+          >
+            {lang === 'ar' ? 'نساعدك في كل خطوة من عملية التأشيرة بسهولة واحترافية' : 'We handle your entire visa process with expertise & care'}
+          </motion.p>
+
+          {/* CTA Buttons — hidden on mobile, shown on desktop */}
+          <div className="hero-text hidden lg:flex flex-row gap-3 md:gap-4 justify-start">
             <a
               href="https://wa.me/971544388038"
               target="_blank"
               rel="noopener noreferrer"
-              className={`${btnClass} font-outfit font-black py-3 px-8 md:py-5 md:px-10 rounded-xl md:rounded-2xl shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-2 text-sm md:text-lg uppercase tracking-widest cursor-pointer md:flex-none`}
+              className={`${btnClass} font-outfit font-black py-3.5 px-10 md:py-5 md:px-10 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all hover:scale-105 hover:shadow-[0_12px_40px_rgba(0,0,0,0.3)] flex items-center justify-center gap-2 text-sm md:text-lg uppercase tracking-widest cursor-pointer md:flex-none`}
             >
               {lang === 'ar' ? 'احجز الآن' : 'Book Now'}
               <MoveRight className={`w-5 h-5 md:w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
             </a>
             <a
               href="#appointments"
-              className="hidden md:flex bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white font-outfit font-black py-3 px-4 md:py-5 md:px-8 rounded-xl md:rounded-2xl transition-all items-center justify-center text-sm md:text-lg uppercase tracking-widest cursor-pointer flex-1 md:flex-none"
+              className="hidden md:flex bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white font-outfit font-black py-3 px-4 md:py-5 md:px-8 rounded-2xl transition-all items-center justify-center text-sm md:text-lg uppercase tracking-widest cursor-pointer flex-1 md:flex-none"
             >
               {lang === 'ar' ? 'خدماتنا' : 'Services'}
             </a>
@@ -273,6 +306,19 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
               <div className="absolute inset-0 w-full h-full border border-white/40 bg-white/10 backdrop-blur-sm rounded-2xl transform -rotate-3 z-10 translate-x-4 translate-y-4 shadow-xl pointer-events-none"></div>
             )}
           </div>
+        </div>
+
+        {/* Mobile-only CTA below image */}
+        <div className="hero-text lg:hidden flex justify-center mt-12">
+          <a
+            href="https://wa.me/971544388038"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${btnClass} font-outfit font-black py-3.5 px-12 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all hover:scale-105 flex items-center justify-center gap-2 text-sm uppercase tracking-widest cursor-pointer`}
+          >
+            {lang === 'ar' ? 'احجز الآن' : 'Book Now'}
+            <MoveRight className={`w-5 h-5 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+          </a>
         </div>
 
       </div>
