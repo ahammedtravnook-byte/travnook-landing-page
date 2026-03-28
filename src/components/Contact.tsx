@@ -60,7 +60,7 @@ const Contact = ({ lang = 'en' }: ContactProps) => {
       const checkResponse = await fetch(`${endpoint}crm.lead.list`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ filter: { "PHONE": formData.phone }, select: ["ID"] }) });
       const checkData = await checkResponse.json();
       if (checkData.result && checkData.result.length > 0) { setSubmitStatus('duplicate'); setIsSubmitting(false); return; }
-      const addResponse = await fetch(`${endpoint}crm.lead.add`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fields: { "TITLE": `Google ads : ${formData.name} + chatbot`, "NAME": formData.name, "PHONE": [{ "VALUE": formData.phone, "VALUE_TYPE": "WORK" }], "COMMENTS": formData.message, "SOURCE_ID": "UC_7B8N42", "ASSIGNED_BY_ID": "4" } }) });
+      const addResponse = await fetch(`${endpoint}crm.lead.add`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fields: { "TITLE": `Google ads : ${formData.name} + chatbot`, "NAME": formData.name, "PHONE": [{ "VALUE": formData.phone, "VALUE_TYPE": "WORK" }], "COMMENTS": formData.message, "SOURCE_ID": "UC_7B8N42", "UF_CRM_1765274714256": "google ads jic", "ASSIGNED_BY_ID": "4" } }) });
       if (addResponse.ok) { setSubmitStatus('success'); triggerConfettiBloom(); localStorage.setItem('_tn_last_sub', Date.now().toString()); setFormData({ name: '', phone: '', message: '' }); } else { setSubmitStatus('error'); }
     } catch (error) { console.error("CRM Error:", error); setSubmitStatus('error'); } finally { setIsSubmitting(false); }
   };
