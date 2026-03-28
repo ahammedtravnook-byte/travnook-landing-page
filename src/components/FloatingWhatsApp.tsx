@@ -14,7 +14,7 @@ const FloatingWhatsApp = ({ lang = 'en' }: Props) => {
       className={`fixed bottom-8 ${lang === 'ar' ? 'left-8' : 'right-8'} z-[100] group`}
     >
       <a 
-        href="https://wa.me/971544388038" 
+        href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me." 
         target="_blank" 
         rel="noopener noreferrer"
         className="relative flex items-center justify-center w-16 h-16 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-[0_0_20px_rgba(37,211,102,0.5)] transition-all hover:scale-110"

@@ -102,7 +102,7 @@ const Steps = ({ lang = 'en' }: { lang?: 'en' | 'ar' }) => {
               </div>
             </div>
             <a
-              href="https://wa.me/971544388038"
+              href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
               target="_blank"
               rel="noopener noreferrer"
               className={`mt-4 md:mt-0 relative z-10 ${btnBg} text-white font-outfit font-black py-3 px-6 md:py-3.5 md:px-8 rounded-xl shadow-lg transition-all hover:-translate-y-1 cursor-pointer text-sm flex items-center gap-2 uppercase tracking-widest`}
@@ -185,7 +185,7 @@ const Steps = ({ lang = 'en' }: { lang?: 'en' | 'ar' }) => {
             </div>
           </div>
           <a
-            href="https://wa.me/971544388038"
+            href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
             target="_blank"
             rel="noopener noreferrer"
             className={`mt-4 md:mt-0 relative z-10 bg-white ${bannerBtnHover} font-bold py-2.5 px-6 md:py-3 md:px-8 rounded-full shadow-lg transition-colors cursor-pointer text-sm md:text-base`}

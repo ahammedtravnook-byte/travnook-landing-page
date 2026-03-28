@@ -122,7 +122,7 @@ const About = ({ lang = 'en' }: AboutProps) => {
 
               <div className="mt-8 md:mt-12 flex justify-center lg:justify-start w-full">
                  <a
-                   href="https://wa.me/971544388038"
+                   href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
                    target="_blank"
                    rel="noopener noreferrer"
                    className={`group ${btnBg} font-outfit font-black py-4 px-10 md:py-5 md:px-12 rounded-xl md:rounded-2xl shadow-xl transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 uppercase tracking-widest cursor-pointer w-full md:w-auto text-sm ${lang === 'ar' ? 'font-arabic' : ''}`}
