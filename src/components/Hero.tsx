@@ -403,6 +403,13 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
           </a>
         </div>
 
+        {/* Disclaimer */}
+        <p className="hero-text text-center text-white/40 text-[10px] font-outfit mt-6 px-4 max-w-lg mx-auto leading-relaxed">
+          {lang === 'ar'
+            ? 'تراف نوك خدمة مساعدة مستقلة. قرار منح التأشيرة يعود حصراً للسفارة أو جهة الهجرة المختصة.'
+            : 'Travnook is an independent assistance service. Visa approval is decided solely by the embassy or immigration authority.'}
+        </p>
+
       </div>
 
       {/* Bottom transition */}

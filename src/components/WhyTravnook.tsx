@@ -22,7 +22,7 @@ const WhyTravnook = ({ lang = 'en' }: WhyTravnookProps) => {
     { en: "Dedicated Assistance", ar: "مساعدة مخصصة", icon: <HeartHandshake className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} /> },
   ] : [
     { en: "Fast Processing", ar: "معالجة سريعة", icon: <FileCheck className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} /> },
-    { en: "High Success Rate", ar: "نسبة نجاح عالية", icon: <Award className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} /> },
+    { en: "Proven Track Record", ar: "سجل موثوق ومُثبت", icon: <Award className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} /> },
     { en: "Expert Guidance", ar: "إرشاد الخبراء", icon: <UserCheck className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} /> },
     { en: "24/7 Support", ar: "دعم 24/7", icon: <HeartHandshake className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.5} /> },
   ];

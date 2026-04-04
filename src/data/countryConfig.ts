@@ -179,7 +179,7 @@ const indonesiaConfig: CountryConfig = {
   metaDesc: "Apply for an Indonesia visa from Dubai with expert assistance. Get guidance on documents and application process for UAE residents.",
   ar: {
     metaTitle: "فيزا إندونيسيا من دبي | تراف نوك",
-    metaDesc: "نضمن لك أسرع إجراءات وأفضل خدمة للحصول على فيزا إندونيسيا من دبي.",
+    metaDesc: "احصل على مساعدة احترافية للتقديم على فيزا إندونيسيا من دبي. فريق خبراء يدعمك في كل خطوة.",
   },
   themeColor: {
     primary: "text-emerald-900",
@@ -269,7 +269,7 @@ const chinaConfig: CountryConfig = {
   metaDesc: "Apply for a China visa from Dubai with experts. Get support with documents, applications, and the appointment process for UAE residents.",
   ar: {
     metaTitle: "فيزا الصين من دبي | تراف نوك",
-    metaDesc: "نضمن لك نسبة نجاح عالية جداً لطلب فيزا الصين من دبي. قدم الآن على تأشيرة الصين للحصول عليها مبكرًا.",
+    metaDesc: "قدم على فيزا الصين من دبي مع فريق متخصص. نساعدك في تجهيز الأوراق وإتمام الطلب بدقة واحترافية.",
   },
   themeColor: {
     primary: "text-teal-900",
@@ -295,8 +295,8 @@ const chinaConfig: CountryConfig = {
     desc2: "We help UAE residents understand China visa requirements clearly and prepare their application with attention to every detail.",
     ar: {
       title: "فيزا الصين من دبي",
-      desc1: "التقديم على طلب فيزا الصين يحتاج إلى الدقة العالية لضمان القبول، وذلك ما يتبعه فريقنا.",
-      desc2: "في تراف نوك ستجد خبراء لديهم كامل المعرفة بالإجراءات السليمة، ويقدمون النصائح في كل الخطوات؛ لزيادة نسبة قبول الطلب.",
+      desc1: "التقديم على طلب فيزا الصين يحتاج إلى الدقة العالية في تجهيز الأوراق، وذلك ما يتبعه فريقنا في كل خطوة.",
+      desc2: "في تراف نوك ستجد خبراء لديهم كامل المعرفة بالإجراءات السليمة، ويقدمون إرشاداً واضحاً في كل مراحل التقديم.",
     }
   },
   plans: [
@@ -310,7 +310,7 @@ const chinaConfig: CountryConfig = {
       ar: {
         title: "نظام المواعيد",
         desc: "إرشاد كامل للتقديم ومعالجة فيزا الصين (سياحة، بزنس، أو زيارة عائلية).",
-        features: ["أوراق سليمة وقوية", "نسبة نجاح عالية", "مستشارين خبراء", "دعم مخصص لك"]
+        features: ["أوراق سليمة وكاملة", "إرشاد احترافي", "مستشارين خبراء", "دعم مخصص لك"]
       }
     }
   ],
@@ -361,7 +361,7 @@ const japanConfig: CountryConfig = {
   metaDesc: "Apply for a Japan visa from Dubai with our expert assistance. We help you with documents, application preparation, and understanding the process clearly.",
   ar: {
     metaTitle: "فيزا اليابان من دبي | تراف نوك",
-    metaDesc: "نضمن لك معالجة سريعة وإرشاد من الخبراء للحصول على فيزا اليابان من دبي في وقت قصير.",
+    metaDesc: "قدم على فيزا اليابان من دبي مع فريق متخصص. نساعدك في فهم المتطلبات وتجهيز ملفك بشكل صحيح.",
   },
   themeColor: {
     primary: "text-sky-950",
@@ -387,8 +387,8 @@ const japanConfig: CountryConfig = {
     desc2: "We support UAE residents with trusted assistance to help ensure their application is complete and properly prepared before submission.",
     ar: {
       title: "فيزا اليابان من دبي",
-      desc1: "فريق تراف نوك يبدأ في تجهيز ملف فيزا اليابان بمجرد التواصل وتحديد طلباتك لضمان السرعة والدقة.",
-      desc2: "ما يميز فريقنا هو الخبرة الواسعة في إجراءات التقديم؛ مما يساعد في زيادة نسبة قبول طلب التأشيرة اليابانية.",
+      desc1: "فريق تراف نوك يبدأ في تجهيز ملف فيزا اليابان بمجرد التواصل وتحديد متطلباتك لضمان الدقة والاكتمال.",
+      desc2: "ما يميز فريقنا هو الخبرة الواسعة في إجراءات التقديم والمعرفة الكاملة بمتطلبات التأشيرة اليابانية.",
     }
   },
   plans: [
