@@ -108,7 +108,7 @@ const TravelPlans = ({ lang = 'en' }: TravelPlansProps) => {
                 </div>
 
                 <a
-                  href="https://wa.me/971544388038"
+                  href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`${btnBg} text-white font-outfit font-black py-3.5 px-8 md:py-4 md:px-10 rounded-xl md:rounded-2xl shadow-xl transition-all flex items-center justify-center gap-3 hover:-translate-y-1 uppercase tracking-widest cursor-pointer text-sm md:text-base w-full md:w-auto ${lang === 'ar' ? 'font-arabic' : ''}`}
@@ -202,7 +202,7 @@ const TravelPlans = ({ lang = 'en' }: TravelPlansProps) => {
               </div>
 
               <a
-                href="https://wa.me/971544388038"
+                href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`w-full py-3.5 md:py-4 text-base md:text-lg rounded-xl md:rounded-2xl font-bold transition-all flex items-center justify-center gap-2 cursor-pointer font-outfit ${

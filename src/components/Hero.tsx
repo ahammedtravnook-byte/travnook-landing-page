@@ -296,7 +296,7 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
           {/* CTA Buttons — hidden on mobile, shown on desktop */}
           <div className="hero-text hidden lg:flex flex-row gap-3 md:gap-4 justify-start">
             <a
-              href="https://wa.me/971544388038"
+              href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
               target="_blank"
               rel="noopener noreferrer"
               className={`${btnClass} font-outfit font-black py-3.5 px-10 md:py-5 md:px-10 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all hover:scale-105 hover:shadow-[0_12px_40px_rgba(0,0,0,0.3)] flex items-center justify-center gap-2 text-sm md:text-lg uppercase tracking-widest cursor-pointer md:flex-none`}
@@ -393,7 +393,7 @@ const Hero = ({ lang = 'en' }: HeroProps) => {
         {/* Mobile-only CTA below image */}
         <div className="hero-text lg:hidden flex justify-center mt-12">
           <a
-            href="https://wa.me/971544388038"
+            href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
             target="_blank"
             rel="noopener noreferrer"
             className={`${btnClass} font-outfit font-black py-3.5 px-12 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-all hover:scale-105 flex items-center justify-center gap-2 text-sm uppercase tracking-widest cursor-pointer`}

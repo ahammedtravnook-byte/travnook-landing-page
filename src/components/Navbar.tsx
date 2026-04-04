@@ -90,7 +90,7 @@ const Navbar = ({ forceSolidMode = false, lang = 'en', toggleLang }: NavbarProps
                 className={`h-7 md:h-12 w-auto transition-all ${isScrolled || forceSolidMode ? 'brightness-100' : 'brightness-0 invert'}`}
               />
               
-              <div className={`relative overflow-hidden pl-2 md:pl-3 border-l pr-1 h-8 md:h-11 flex items-center ${isScrolled || forceSolidMode ? 'border-gray-200' : 'border-white/30'}`} style={{ minWidth: '80px' }}>
+              <div className={`relative overflow-hidden pl-2 md:pl-3 border-l pr-1 h-8 md:h-11 flex items-center w-[80px] md:w-[115px] shrink-0 ${isScrolled || forceSolidMode ? 'border-gray-200' : 'border-white/30'}`}>
                 <AnimatePresence mode="wait">
                   {brandPhase === 0 ? (
                     <motion.span
@@ -158,7 +158,7 @@ const Navbar = ({ forceSolidMode = false, lang = 'en', toggleLang }: NavbarProps
               </button>
 
               <a
-                href="https://wa.me/971544388038"
+                href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 md:w-12 md:h-12 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-lg group"
@@ -256,7 +256,7 @@ const Navbar = ({ forceSolidMode = false, lang = 'en', toggleLang }: NavbarProps
                         )}
                      </h4>
                      <a
-                        href="https://wa.me/971544388038"
+                        href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`w-full ${menuBtnBg} text-white font-outfit font-black py-3.5 md:py-5 rounded-xl md:rounded-2xl flex items-center justify-center gap-3 shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-sm md:text-base`}

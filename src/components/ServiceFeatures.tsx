@@ -144,7 +144,7 @@ const ServiceFeatures = () => {
               </div>
 
               <a
-                href="https://wa.me/971544388038"
+                href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-8 inline-flex items-center gap-3 ${btnBg} text-white font-outfit font-black py-3 px-7 md:py-4 md:px-10 rounded-xl md:rounded-2xl shadow-lg transition-all hover:-translate-y-1 cursor-pointer uppercase tracking-widest text-sm`}
@@ -274,7 +274,7 @@ const ServiceFeatures = () => {
               ))}
             </div>
             <a
-              href="https://wa.me/971544388038"
+              href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-block bg-brand-green hover:bg-brand-teal text-white font-bold py-3 px-8 rounded-full shadow-lg transition-colors cursor-pointer"

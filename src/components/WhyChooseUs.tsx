@@ -116,7 +116,7 @@ const WhyChooseUs = ({ lang = 'en' }: WhyChooseUsProps) => {
           {/* CTA */}
           <div className="text-center mt-8 md:mt-14">
             <a
-              href="https://wa.me/971544388038"
+              href="https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20visa%20assistance%20service.%20Please%20guide%20me."
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex items-center gap-3 ${btnBg} font-outfit font-black py-3.5 px-8 md:py-4 md:px-10 rounded-xl md:rounded-2xl shadow-xl transition-all hover:-translate-y-1 uppercase tracking-widest cursor-pointer text-sm ${lang === 'ar' ? 'font-arabic' : ''}`}
