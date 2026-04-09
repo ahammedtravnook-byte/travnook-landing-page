@@ -43,11 +43,74 @@ function App() {
   useEffect(() => {
     // Dynamically update SEO meta tags based on active build mode
     const isAr = lang === 'ar' && config.ar;
-    document.title = isAr ? config.ar!.metaTitle : config.metaTitle;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute("content", isAr ? config.ar!.metaDesc : config.metaDesc);
+    const pageTitle = isAr ? config.ar!.metaTitle : config.metaTitle;
+    const pageDesc = isAr ? config.ar!.metaDesc : config.metaDesc;
+    const buildTime: string = typeof __BUILD_TIME__ !== 'undefined' ? __BUILD_TIME__ : new Date().toISOString();
+    const buildDate: string = typeof __BUILD_DATE__ !== 'undefined' ? __BUILD_DATE__ : new Date().toISOString().split('T')[0];
+    const countryMode: string = typeof __COUNTRY_MODE__ !== 'undefined' ? __COUNTRY_MODE__ : 'schengen';
+    const canonicalUrl = `https://travnook.com/${countryMode}/`;
+
+    document.title = pageTitle;
+
+    const setMeta = (name: string, content: string, isProperty = false) => {
+      const attr = isProperty ? 'property' : 'name';
+      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement;
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
+
+    // Core SEO
+    setMeta('description', pageDesc);
+    setMeta('robots', 'index, follow, max-snippet:-1, max-image-preview:large');
+
+    // Freshness signals — Google Ads reads these to judge if the page is "new"
+    setMeta('article:modified_time', buildTime, true);
+    setMeta('og:updated_time', buildTime, true);
+
+    // Open Graph
+    setMeta('og:title', pageTitle, true);
+    setMeta('og:description', pageDesc, true);
+    setMeta('og:type', 'website', true);
+    setMeta('og:url', canonicalUrl, true);
+    setMeta('og:site_name', 'Travnook', true);
+    setMeta('og:locale', lang === 'ar' ? 'ar_AE' : 'en_AE', true);
+
+    // Canonical URL — unique per country, tells Google this is a distinct page
+    let canonical = document.querySelector("link[rel='canonical']") as HTMLLinkElement;
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
     }
+    canonical.href = canonicalUrl;
+
+    // JSON-LD structured data with dateModified — strongest freshness signal for Google
+    const existingSchema = document.getElementById('travnook-schema');
+    if (existingSchema) existingSchema.remove();
+    const schema = document.createElement('script');
+    schema.id = 'travnook-schema';
+    schema.type = 'application/ld+json';
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Travnook",
+      "url": canonicalUrl,
+      "description": pageDesc,
+      "dateModified": buildTime,
+      "datePublished": buildDate,
+      "serviceType": `${config.countryName} Visa Assistance`,
+      "areaServed": "United Arab Emirates",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "availableLanguage": ["English", "Arabic"]
+      }
+    });
+    document.head.appendChild(schema);
 
     // Set document direction
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';

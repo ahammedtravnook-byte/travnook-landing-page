@@ -4,7 +4,8 @@
       "WebSearch",
       "WebFetch(domain:apidocs.bitrix24.com)",
       "WebFetch(domain:training.bitrix24.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(npm run:*)"
     ]
   }
 }
