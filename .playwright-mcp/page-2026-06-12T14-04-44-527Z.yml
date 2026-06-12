@@ -1,0 +1,436 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "Travnook logo Travnook — 4.7 Google rating" [ref=e5] [cursor=pointer]:
+        - /url: https://travnook.com/
+        - img "Travnook logo" [ref=e6]
+        - generic "Travnook — 4.7 Google rating" [ref=e7]:
+          - generic [ref=e8]: Travnook
+          - generic [ref=e9]:
+            - generic [ref=e10]:
+              - generic [ref=e11]:
+                - img [ref=e12]
+                - img [ref=e14]
+                - img [ref=e16]
+                - img [ref=e18]
+                - img [ref=e20]
+              - generic [ref=e22]: "4.7"
+            - generic [ref=e23]:
+              - img [ref=e24]
+              - generic [ref=e27]: 10 YRS EXP.
+      - generic [ref=e28]:
+        - link "Journey" [ref=e29] [cursor=pointer]:
+          - /url: "#journey"
+        - link "About" [ref=e30] [cursor=pointer]:
+          - /url: "#about"
+        - link "Our Plan" [ref=e31] [cursor=pointer]:
+          - /url: "#plan"
+        - link "How It Works" [ref=e32] [cursor=pointer]:
+          - /url: "#steps"
+        - link "FAQ" [ref=e33] [cursor=pointer]:
+          - /url: "#faq"
+        - link "Contact" [ref=e34] [cursor=pointer]:
+          - /url: "#contact"
+      - generic [ref=e35]:
+        - button "Switch language" [ref=e36] [cursor=pointer]: عربي
+        - link "Chat on WhatsApp" [ref=e37] [cursor=pointer]:
+          - /url: https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20South%20Korea%20appointment%20assistance%20service.%20Please%20guide%20me.
+          - img [ref=e38]
+  - banner [ref=e40]:
+    - generic:
+      - generic: 대한민국
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - img [ref=e46]
+        - img [ref=e48]
+        - generic [ref=e50]: 4.7 RATING
+        - generic [ref=e51]: "|"
+        - generic [ref=e52]: 10+ YEARS EXPERIENCE
+      - generic [ref=e54]:
+        - img [ref=e56]
+        - generic [ref=e84]: South Korea Appointment Assistance
+      - heading "Your Journey to Seoul Starts Here." [level=1] [ref=e85]:
+        - text: Your Journey to Seoul
+        - text: Starts Here.
+      - paragraph [ref=e86]: From the palaces of Seoul to the neon of Myeongdong — our expert team guides UAE residents through the South Korea appointment and application process with clarity and precision.
+      - generic [ref=e87]:
+        - generic [ref=e88]:
+          - img [ref=e89]
+          - generic [ref=e92]: Appointment Booking
+        - generic [ref=e93]:
+          - img [ref=e94]
+          - generic [ref=e98]: Document Review
+        - generic [ref=e99]:
+          - img [ref=e100]
+          - generic [ref=e103]: End-to-End Support
+      - generic [ref=e104]:
+        - link "Start My Application" [ref=e105] [cursor=pointer]:
+          - /url: https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20South%20Korea%20appointment%20assistance%20service.%20Please%20guide%20me.
+          - generic [ref=e106]: Start My Application
+          - img [ref=e107]
+        - link "Explore the Journey" [ref=e109] [cursor=pointer]:
+          - /url: "#journey"
+      - generic [ref=e110]:
+        - img [ref=e111]
+        - generic [ref=e114]: Trusted private assistance service for UAE residents
+    - generic:
+      - generic: Scroll
+      - img
+  - generic [ref=e116]:
+    - generic [ref=e117]: SEOUL 서울
+    - generic [ref=e119]: BUSAN 부산
+    - generic [ref=e121]: JEJU 제주
+    - generic [ref=e123]: INCHEON 인천
+    - generic [ref=e125]: GYEONGJU 경주
+    - generic [ref=e127]: APPOINTMENT ASSISTANCE
+    - generic [ref=e129]: TRAVNOOK ✦
+    - generic [ref=e131]: SEOUL 서울
+    - generic [ref=e133]: BUSAN 부산
+    - generic [ref=e135]: JEJU 제주
+    - generic [ref=e137]: INCHEON 인천
+    - generic [ref=e139]: GYEONGJU 경주
+    - generic [ref=e141]: APPOINTMENT ASSISTANCE
+    - generic [ref=e143]: TRAVNOOK ✦
+  - generic [ref=e145]:
+    - generic [ref=e147]:
+      - generic: 여행
+      - generic [ref=e148]:
+        - img [ref=e149]
+        - generic [ref=e152]: The Journey — 5 Stops
+      - heading "Five stops, one Korea you won't forget." [level=2] [ref=e153]:
+        - text: Five stops,
+        - text: one Korea you won't forget.
+      - paragraph [ref=e154]: Royal palaces, hanok villages, neon nights, cherry blossoms and midnight food markets — a glimpse of everything waiting for you.
+      - generic [ref=e155]:
+        - generic [ref=e156]: Keep scrolling
+        - img [ref=e157]
+    - generic [ref=e160]:
+      - generic [ref=e161]:
+        - article [ref=e162]:
+          - img "Gyeongbokgung Palace, Seoul" [ref=e163]
+          - generic [ref=e165]: 01 / 05
+          - generic [ref=e166]: 고궁
+          - generic [ref=e167]:
+            - heading "Royal Palaces" [level=3] [ref=e168]
+            - paragraph [ref=e169]: Walk through 600 years of history at Gyeongbokgung — guards in royal robes, gates of painted wood.
+        - article [ref=e170]:
+          - img "Traditional hanok village at sunset" [ref=e171]
+          - generic [ref=e173]: 02 / 05
+          - generic [ref=e174]: 한옥
+          - generic [ref=e175]:
+            - heading "Hanok Villages" [level=3] [ref=e176]
+            - paragraph [ref=e177]: Tiled rooftops glowing at golden hour — Jeonju and Bukchon feel like stepping into a painting.
+        - article [ref=e178]:
+          - img "Neon-lit street in Seoul at night" [ref=e179]
+          - generic [ref=e181]: 03 / 05
+          - generic [ref=e182]: 서울
+          - generic [ref=e183]:
+            - heading "Neon Nights" [level=3] [ref=e184]
+            - paragraph [ref=e185]: Myeongdong, Hongdae, Gangnam — K-pop, street fashion and a skyline that never sleeps.
+        - article [ref=e186]:
+          - img "Cherry blossoms in spring" [ref=e187]
+          - generic [ref=e189]: 04 / 05
+          - generic [ref=e190]: 벚꽃
+          - generic [ref=e191]:
+            - heading "Cherry Blossom Season" [level=3] [ref=e192]
+            - paragraph [ref=e193]: Every April the whole country turns pink — Yeouido and Jinhae are pure magic.
+        - article [ref=e194]:
+          - img "Korean street food — tteokbokki" [ref=e195]
+          - generic [ref=e197]: 05 / 05
+          - generic [ref=e198]: 맛집
+          - generic [ref=e199]:
+            - heading "Food Heaven" [level=3] [ref=e200]
+            - paragraph [ref=e201]: Tteokbokki, Korean BBQ, street markets at midnight — come hungry, leave happy.
+      - generic [ref=e202]:
+        - generic [ref=e203]: "01"
+        - generic [ref=e204]: / 05
+  - generic [ref=e211]:
+    - generic: 신뢰
+    - generic [ref=e212]:
+      - generic [ref=e213]:
+        - generic [ref=e214]:
+          - img "Seoul skyline with cherry blossoms and N Seoul Tower" [ref=e215]
+          - img [ref=e217]:
+            - generic [ref=e218]: SEOUL • TRAVNOOK • TRAVEL •
+        - generic [ref=e223]:
+          - generic [ref=e224]:
+            - generic [ref=e225]: "02"
+            - generic [ref=e227]: Why Travnook
+          - heading "Trusted South Korea appointment assistance, in Dubai" [level=2] [ref=e228]
+          - paragraph [ref=e229]: Getting your South Korea appointment and application right takes careful preparation — accurate documents, a correctly completed form, and on-time submission. Our team supports you at every step to keep the process simple.
+          - paragraph [ref=e230]: With 10+ years of experience assisting UAE residents, we help you understand the requirements clearly and get your application ready with attention to every detail.
+      - generic [ref=e231]:
+        - generic [ref=e232]:
+          - generic [ref=e233]: 0+
+          - generic [ref=e234]: Years Experience
+        - generic [ref=e235]:
+          - generic [ref=e236]: "0"
+          - generic [ref=e237]: Google Rating
+        - generic [ref=e238]:
+          - generic [ref=e239]: 0/7
+          - generic [ref=e240]: Support Available
+        - generic [ref=e241]:
+          - generic [ref=e242]: 0 min
+          - generic [ref=e243]: Avg. Response Time
+  - generic [ref=e244]:
+    - generic: 계획
+    - generic [ref=e245]:
+      - generic [ref=e246]:
+        - generic [ref=e247]: "03"
+        - generic [ref=e249]: The Plan
+      - heading "One complete service. Zero confusion." [level=2] [ref=e250]
+      - generic [ref=e251]:
+        - generic [ref=e252]:
+          - img "Gyeongbokgung Palace pavilion, Seoul" [ref=e253]
+          - generic [ref=e254]: Most Popular
+          - generic [ref=e255]: KOR 1
+        - generic [ref=e256]:
+          - heading "Complete South Korea Appointment Assistance" [level=3] [ref=e257]
+          - paragraph [ref=e258]: End-to-end assistance for your South Korea trip from Dubai — appointment guidance, document preparation, application support and ongoing updates until submission.
+          - list [ref=e259]:
+            - listitem [ref=e260]:
+              - img [ref=e261]
+              - generic [ref=e264]: Document Review & Checklist Guidance
+            - listitem [ref=e265]:
+              - img [ref=e266]
+              - generic [ref=e269]: Application Form Assistance
+            - listitem [ref=e270]:
+              - img [ref=e271]
+              - generic [ref=e274]: Application Review & Error Check
+            - listitem [ref=e275]:
+              - img [ref=e276]
+              - generic [ref=e279]: Ongoing Application Updates
+            - listitem [ref=e280]:
+              - img [ref=e281]
+              - generic [ref=e284]: Dedicated Support Team
+          - link "Enquire on WhatsApp" [ref=e285] [cursor=pointer]:
+            - /url: https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20the%20Complete%20South%20Korea%20Appointment%20Assistance%20Service%20(KOR%201).
+            - generic [ref=e286]: Enquire on WhatsApp
+            - img [ref=e287]
+  - generic [ref=e289]:
+    - generic: 절차
+    - generic [ref=e290]:
+      - generic [ref=e291]:
+        - generic [ref=e292]:
+          - generic [ref=e293]: "04"
+          - generic [ref=e295]: How It Works
+        - heading "Five steps to Annyeong, Seoul!" [level=2] [ref=e296]
+      - generic [ref=e297]:
+        - generic [ref=e299]:
+          - generic [ref=e300]: "01"
+          - img [ref=e302]
+          - heading "Submit Your Details" [level=3] [ref=e305]
+          - paragraph [ref=e306]: Share your basic travel and personal information to get started.
+        - generic [ref=e307]:
+          - generic [ref=e308]: "02"
+          - img [ref=e310]
+          - heading "Document Review" [level=3] [ref=e314]
+          - paragraph [ref=e315]: Get a personal checklist and have every document reviewed for completeness.
+        - generic [ref=e316]:
+          - generic [ref=e317]: "03"
+          - img [ref=e319]
+          - heading "Application Support" [level=3] [ref=e321]
+          - paragraph [ref=e322]: We help you fill out and prepare your application accurately.
+        - generic [ref=e323]:
+          - generic [ref=e324]: "04"
+          - img [ref=e326]
+          - heading "Appointment Assistance" [level=3] [ref=e329]
+          - paragraph [ref=e330]: Understand the appointment process and next steps based on availability.
+        - generic [ref=e331]:
+          - generic [ref=e332]: "05"
+          - img [ref=e334]
+          - heading "Submission & Processing" [level=3] [ref=e336]
+          - paragraph [ref=e337]: Attend your appointment and proceed as per official guidelines.
+  - generic [ref=e338]:
+    - generic: 서류
+    - generic [ref=e339]:
+      - generic [ref=e340]:
+        - generic [ref=e341]:
+          - generic [ref=e342]: "05"
+          - generic [ref=e344]: The Checklist
+        - heading "Everything you need, checked." [level=2] [ref=e345]
+        - paragraph [ref=e346]: Here's what a complete South Korea application usually includes — every checklist is personalised to your nationality and travel plans.
+      - generic [ref=e347]:
+        - generic [ref=e348]:
+          - img [ref=e350]
+          - generic [ref=e353]:
+            - generic [ref=e354]: Processing Time
+            - generic [ref=e355]: Approx. 7–14 working days
+        - generic [ref=e356]:
+          - img [ref=e358]
+          - generic [ref=e360]:
+            - generic [ref=e361]: Fees
+            - generic [ref=e362]: Varies by duration — contact us
+        - generic [ref=e363]:
+          - img [ref=e365]
+          - generic [ref=e368]:
+            - generic [ref=e369]: Checklist
+            - generic [ref=e370]: 10 essential documents
+      - generic [ref=e371]:
+        - generic [ref=e372]:
+          - img [ref=e374]
+          - generic: "01"
+          - generic [ref=e378]:
+            - generic [ref=e379]: Original Passport
+            - generic [ref=e380]: Min 6 months validity · 2 blank pages
+        - generic [ref=e381]:
+          - img [ref=e383]
+          - generic: "02"
+          - generic [ref=e387]:
+            - generic [ref=e388]: UAE Residence Visa
+            - generic [ref=e389]: Valid for at least 3 months
+        - generic [ref=e390]:
+          - img [ref=e392]
+          - generic: "03"
+          - generic [ref=e395]:
+            - generic [ref=e396]: Application Form
+            - generic [ref=e397]: Completed accurately & signed
+        - generic [ref=e398]:
+          - img [ref=e400]
+          - generic: "04"
+          - generic [ref=e404]:
+            - generic [ref=e405]: Passport Photograph
+            - generic [ref=e406]: 35×45mm · white background
+        - generic [ref=e407]:
+          - img [ref=e409]
+          - generic: "05"
+          - generic [ref=e412]:
+            - generic [ref=e413]: Flight & Hotel Booking
+            - generic [ref=e414]: Confirmed reservations
+        - generic [ref=e415]:
+          - img [ref=e417]
+          - generic: "06"
+          - generic [ref=e419]:
+            - generic [ref=e420]: Bank Statements
+            - generic [ref=e421]: Last 3–6 months · stamped
+        - generic [ref=e422]:
+          - img [ref=e424]
+          - generic: "07"
+          - generic [ref=e427]:
+            - generic [ref=e428]: Employment / Trade License
+            - generic [ref=e429]: Job or business proof
+        - generic [ref=e430]:
+          - img [ref=e432]
+          - generic: "08"
+          - generic [ref=e435]:
+            - generic [ref=e436]: No Objection Certificate
+            - generic [ref=e437]: NOC from your employer
+        - generic [ref=e438]:
+          - img [ref=e440]
+          - generic: "09"
+          - generic [ref=e443]:
+            - generic [ref=e444]: Travel Itinerary
+            - generic [ref=e445]: Day-by-day plan recommended
+        - generic [ref=e446]:
+          - img [ref=e448]
+          - generic: "10"
+          - generic [ref=e450]:
+            - generic [ref=e451]: Supporting Documents
+            - generic [ref=e452]: Based on your travel purpose
+      - figure "한강 Han River · Seoul" [ref=e453]:
+        - img "Lotte World Tower and Seoul skyline across the Han River" [ref=e454]
+        - generic [ref=e455]:
+          - generic [ref=e456]: 한강
+          - generic [ref=e457]: Han River · Seoul
+  - generic [ref=e458]:
+    - generic: 질문
+    - generic [ref=e459]:
+      - generic [ref=e460]:
+        - generic [ref=e461]: "06"
+        - generic [ref=e463]: FAQ
+      - heading "Good questions, honest answers." [level=2] [ref=e464]
+      - generic [ref=e465]:
+        - generic [ref=e466]:
+          - button "Who is this appointment assistance service for?" [ref=e467] [cursor=pointer]:
+            - generic [ref=e468]: Who is this appointment assistance service for?
+            - img [ref=e470]
+          - paragraph [ref=e472]: UAE residents planning a trip to South Korea. Entry requirements depend on your nationality — our team confirms exactly what applies to you and assists with the full appointment and application process.
+        - generic [ref=e473]:
+          - button "How long does the process usually take?" [ref=e474] [cursor=pointer]:
+            - generic [ref=e475]: How long does the process usually take?
+            - img [ref=e477]
+          - paragraph [ref=e479]: After submission, processing by the consulate typically takes around 7–14 working days, depending on the season. We recommend starting well in advance of your travel date.
+        - generic [ref=e480]:
+          - button "What documents are usually part of the application?" [ref=e481] [cursor=pointer]:
+            - generic [ref=e482]: What documents are usually part of the application?
+            - img [ref=e484]
+          - paragraph [ref=e486]: "Typically: a valid passport, UAE residence visa, completed application form, photograph, flight and hotel bookings, bank statements, and an employment certificate or NOC. You get a personalised checklist based on your situation."
+        - generic [ref=e487]:
+          - button "Do you guarantee approval?" [ref=e488] [cursor=pointer]:
+            - generic [ref=e489]: Do you guarantee approval?
+            - img [ref=e491]
+          - paragraph [ref=e493]: No. We are a private assistance service — all decisions are made solely by the Embassy/Consulate of the Republic of Korea. Our role is to help your application go in complete, accurate and on time.
+        - generic [ref=e494]:
+          - button "Can you help with urgent or last-minute travel?" [ref=e495] [cursor=pointer]:
+            - generic [ref=e496]: Can you help with urgent or last-minute travel?
+            - img [ref=e498]
+          - paragraph [ref=e500]: Yes — contact us with your travel date and our team will advise you on the fastest realistic path based on current processing times and appointment availability.
+  - generic [ref=e501]:
+    - generic: 연락
+    - generic [ref=e503]:
+      - generic [ref=e504]:
+        - generic [ref=e505]:
+          - generic [ref=e506]: "07"
+          - generic [ref=e508]: Reach Out
+        - heading "Start your South Korea application today" [level=2] [ref=e509]
+        - paragraph [ref=e510]: Get step-by-step assistance from our travel experts and make your appointment and application simple. We usually respond within 15 minutes.
+        - generic [ref=e511]:
+          - link "Call Us +971 54 438 8038" [ref=e512] [cursor=pointer]:
+            - /url: tel:+971544388038
+            - img [ref=e514]
+            - generic [ref=e516]:
+              - generic [ref=e517]: Call Us
+              - generic [ref=e518]: +971 54 438 8038
+          - link "Email contact@travnook.com" [ref=e519] [cursor=pointer]:
+            - /url: mailto:contact@travnook.com
+            - img [ref=e521]
+            - generic [ref=e524]:
+              - generic [ref=e525]: Email
+              - generic [ref=e526]: contact@travnook.com
+          - generic [ref=e527]:
+            - img [ref=e529]
+            - generic [ref=e532]:
+              - generic [ref=e533]: Office
+              - generic [ref=e534]: Dubai, UAE
+      - generic [ref=e535]:
+        - generic [ref=e536]:
+          - img [ref=e537]
+          - heading "Send Your Enquiry" [level=3] [ref=e540]
+        - paragraph [ref=e541]: We usually respond within 15 minutes.
+        - generic [ref=e542]:
+          - generic [ref=e543]:
+            - img [ref=e544]
+            - generic [ref=e547]: Full Name *
+          - textbox "Full Name *" [ref=e548]:
+            - /placeholder: John Doe
+          - generic [ref=e549]:
+            - img [ref=e550]
+            - generic [ref=e552]: Phone Number *
+          - textbox "Phone Number *" [ref=e553]:
+            - /placeholder: +971 50 XXX XXXX
+          - generic [ref=e555]: Message
+          - textbox "Message" [ref=e556]:
+            - /placeholder: Please explain your situation...
+          - button "Submit Request" [ref=e557] [cursor=pointer]:
+            - generic [ref=e558]: Submit Request
+            - img [ref=e559]
+        - generic [ref=e561]:
+          - generic [ref=e562]: Safety Guaranteed
+          - generic [ref=e565]: Agents Online
+  - contentinfo [ref=e566]:
+    - generic [ref=e567]:
+      - paragraph [ref=e568]: "Disclaimer: We are a private assistance service. We do not issue, guarantee, or influence travel permits. All decisions regarding entry and stay are made by the respective embassy or immigration authority."
+      - generic [ref=e570]:
+        - link "Travnook Travnook" [ref=e571] [cursor=pointer]:
+          - /url: https://travnook.com/
+          - img "Travnook" [ref=e572]
+          - text: Travnook
+        - generic [ref=e573]:
+          - link "Privacy Policy" [ref=e574] [cursor=pointer]:
+            - /url: privacy.html
+          - link "Terms & Conditions" [ref=e575] [cursor=pointer]:
+            - /url: terms.html
+        - generic [ref=e576]: © 2026 Travnook. All rights reserved.
+  - link "Chat with us on WhatsApp" [ref=e577] [cursor=pointer]:
+    - /url: https://wa.me/971544388038?text=Hi%20Travnook!%20I'm%20interested%20in%20your%20South%20Korea%20appointment%20assistance%20service.%20Please%20guide%20me.
+    - img [ref=e578]
