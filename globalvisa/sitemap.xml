@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://travnook.com/globalvisa/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://travnook.com/globalvisa/images/hero_light_emerald.jpg</image:loc>
+      <image:title>Expert Visa &amp; Travel Assistance in Dubai</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://travnook.com/globalvisa/images/who_we_are.jpg</image:loc>
+      <image:title>Traveller at Dubai airport after visa approval</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://travnook.com/globalvisa/privacy.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://travnook.com/globalvisa/terms.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

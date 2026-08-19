@@ -1,0 +1,166 @@
+================================================================
+TRAVNOOK COMMON LANDING PAGE - ARABIC CONTENT
+File: common/index.html
+For: SEO content writer
+The "LOCATION" line (in English) tells you exactly where the text is shown.
+(English version: website-content-en.txt)
+================================================================
+
+
+----------------------------------------------------------------
+1. SEO / BROWSER META
+----------------------------------------------------------------
+
+LOCATION: Browser tab title / meta description
+(Currently English only - Arabic versions can be added if an Arabic URL is created)
+
+
+----------------------------------------------------------------
+2. NAVIGATION BAR (top of page, sticky)
+----------------------------------------------------------------
+
+LOCATION: Nav brand rotating badge (swaps with logo name every 3 seconds)
++10 سنوات خبرة
+
+LOCATION: Nav menu links
+من نحن | تواصل معنا الآن
+
+
+----------------------------------------------------------------
+3. HERO SECTION (first screen)
+----------------------------------------------------------------
+
+LOCATION: Small gold rating line above the badge
+4.7 تقييم العملاء | 10+ سنوات خبرة
+
+LOCATION: Pill badge above the headline
+استخراج تأشيرات وتجهيزات السفر من دبي إلى أي مكان في العالم
+
+LOCATION: Main headline (H1)
+أحلم بأي رحلة وتراف نوك بكل بساطة ستجعلها حقيقة
+
+LOCATION: Paragraph under the headline
+تراف نوك وكالة سفر مقرها دبي، لها خبرة أكثر من 10 سنوات في الإمارات، خلال تلك السنوات قدمت خدمات سفر لأكثر من 20,000 عميل، كلهم راضيين عن مستوى الخدمات التي قُدمت لهم.
+
+يقدم فريق تراف نوك خدمات سفر متنوعة، تشمل استخراج التأشيرات لأكثر من 50 دولة ومن ضمنهم أمريكا والشنغن وبريطانيا، دعم ملفات التقديم وتجهيز مستندات مثالية، وتصميم برامج سياحية مُخصصة لكل عميل حسب طلبه، مع المساعدة في حجز تذاكر الطيران والإقامة والأماكن السياحية.
+
+خدمات تراف نوك لا تُقدم للأفراد فقط، بل يوجد خدمات سفر جماعية للشركات، واستخراج تأشيرات للعائلات، وتجهيزات رحلة شهر العسل من الإمارات.
+
+LOCATION: Buttons under the paragraph
+كيف نساعدك؟ تواصل معنا الآن
+
+LOCATION: Trust line under the buttons (shield icon)
+ +20,000 عميل ساعدناهم في السفر بسهولة من الإمارات
+
+LOCATION: Scroll hint at the bottom of the hero
+مرر
+
+
+----------------------------------------------------------------
+4. QUICK APPLY FORM
+   (right side of hero on desktop / bottom of page on mobile)
+----------------------------------------------------------------
+
+LOCATION: Form card title
+اترك بيناتك لتواصل سريع ومجاني
+
+LOCATION: Small green badge next to title
+رد خلال 15 دقيقة
+
+LOCATION: Line under the title
+احصل على استشارة من أحد خبراء التأشيرات لدينا
+
+LOCATION: Form field labels
+الاسم بالكامل * | الهاتف / واتساب * | الوجهة *
+
+LOCATION: Form field placeholders
+الاسم | 50 123 4567 | اختر وجهتك
+
+LOCATION: Submit button
+قدم طلبك الآن
+
+LOCATION: Small line under the submit button
+استشارة مجانية بدون ضغوطات
+
+LOCATION: Section label above the form (mobile bottom position only)
+تواصل معنا
+
+LOCATION: Form status messages (shown after user actions)
+يرجى إدخال الاسم ورقم الهاتف.
+يرجى اختيار وجهة السفر.
+جارٍ الإرسال...
+تم الإرسال! سيتصل بك مستشار التأشيرات قريباً.
+لقد قدمت طلبك بالفعل. يرجى الانتظار، فريقنا مشغول حاليًا. سيتواصل معك أحد الخبراء في أقرب وقت.
+حدث خطأ. حاول مرة أخرى أو اتصل بنا مباشرة.
+
+LOCATION: Country picker popup (opens from phone code and destination fields)
+اختر رمز الدولة | اختر وجهتك | ابحث عن دولة... | الوجهات الأكثر طلباً | جميع الدول
+
+
+----------------------------------------------------------------
+5. DESTINATIONS MARQUEE (gold moving strip under the hero)
+----------------------------------------------------------------
+
+LOCATION: Scrolling city names
+(English only, decorative - same in both languages)
+
+
+----------------------------------------------------------------
+6. WHO WE ARE SECTION
+----------------------------------------------------------------
+
+LOCATION: Section label (small, above the title)
+ما هي وكالة تراف نوك؟
+
+LOCATION: Section title (H2)
+فريق من الخبراء ساعد آلاف المسافرين من دبي
+
+LOCATION: Intro paragraph under the title
+تأسست وكالة تراف نوك عام 2015 ومقرها دبي؛ لتكون مُتخصصة في استشارات الفيزا وتجهيزات السفر للمقيمين في الإمارات. قدمت تراف نوك خدمات متنوعة لأكثر من 20,000 عميل، ساعدهم الفريق في الحصول على رحلات ممتعة، وساعدهم العملاء في إثقال خبرتهم؛ ما يجعل وكالة تراف نوك من أفضل وكالات السفر والسياحة في دبي.
+
+
+LOCATION: White badge on the photo (bottom left corner)
+20,000+ / مُسافر سعيد منذ 2015
+
+LOCATION: Feature list, item 1 (title + description)
+خبير تأشيرات لكل عميل — مراجعة شخصية للمستندات، تجهيز الأوراق المناسبة للحالة والغرض من السفر، التأكد من التوافق مع الشروط المطلوبة، ونصائح لزيادة فرص الموافقة.
+
+LOCATION: Feature list, item 2 (title + description)
+حجوزات حقيقية — حجز موعد تأشيرة سريع، وحجوزات طيران موثقة برقم PNR، وحجوزات فنادق. كل الحجوزات مؤكدة ويمكن للسفارات التحقق منها فعلياً.
+
+LOCATION: Feature list, item 3 (title + description)
+إجراءات شفافة 100% — كافة الرسوم واضحة، والمواعيد منطقية، لا تقلق من أي وعود زائفة. تعرف دائماً أين وصل ملفك بكل صدق.
+
+LOCATION: Button at the end of the feature list
+ابدأ أول خطوة معنا
+
+LOCATION: Dark stats bar (4 animated counters at the bottom of the section)
+10+ سنوات خبرة | 20K+ عميل راضي | 50+ دولة حول العالم | 24/7 دعم متواصل
+
+
+----------------------------------------------------------------
+7. FOOTER
+----------------------------------------------------------------
+
+LOCATION: Disclaimer paragraph (center of footer)
+إخلاء مسؤولية: تراف نوك تقدم خدمات استشارة للفيزا ومساعدة في تجهيزات السفر من دبي، الإمارات. نحن لسنا تابعين أو معتمدين أو مصرّح لنا من أي سفارة أو قنصلية أو جهة حكومية. قد تكون الخدمات نفسها متاحة مباشرة لدى الجهات المختصة، ورسوم خدمتنا منفصلة عن أي رسوم رسمية حكومية. نحن نساعد فقط في تجهيز ملف فيزا مثالي له فرص أعلى في الموافقة؛ جميع قرارات التأشيرات تتخذها حصرياً السفارة أو دائرة الهجرة المعنية.
+
+LOCATION: Footer links
+سياسة الخصوصية | الشروط والأحكام
+
+LOCATION: Copyright line (year updates automatically)
+© 2026 Travnook. All rights reserved.
+
+
+----------------------------------------------------------------
+8. CONTACT DETAILS USED ON THE PAGE
+----------------------------------------------------------------
+
+Phone / WhatsApp: +971 54 438 8038
+Email: contact@travnook.com
+Office: دبي، الإمارات
+WhatsApp prefilled message: "Hello Travnook, I need assistance with my visa application."
+
+================================================================
+END OF ARABIC CONTENT
+================================================================

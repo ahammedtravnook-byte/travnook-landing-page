@@ -1,0 +1,167 @@
+================================================================
+TRAVNOOK COMMON LANDING PAGE - ENGLISH CONTENT
+File: common/index.html
+For: SEO content writer
+The "LOCATION" line tells you exactly where the text is shown.
+(Arabic version: website-content-ar.txt)
+================================================================
+
+
+----------------------------------------------------------------
+1. SEO / BROWSER META (not visible on page, used by Google)
+----------------------------------------------------------------
+
+LOCATION: Browser tab title
+Expert Visa & Travel Assistance in Dubai | Travnook
+
+LOCATION: Meta description (Google search result text)
+Trusted travel agency in Dubai for worldwide visa assistance, embassy appointments, flights, hotels & holidays. Trusted by 20,000+ happy customers since 2015.
+
+
+----------------------------------------------------------------
+2. NAVIGATION BAR (top of page, sticky)
+----------------------------------------------------------------
+
+LOCATION: Nav brand rotating badge (swaps with logo name every 3 seconds)
+4.7 (star rating) / 10 YRS EXP.
+
+LOCATION: Nav menu links
+Who We Are | Apply Now
+
+
+----------------------------------------------------------------
+3. HERO SECTION (first screen)
+----------------------------------------------------------------
+
+LOCATION: Small gold rating line above the badge
+4.7 RATING | 10+ YEARS EXPERIENCE
+
+LOCATION: Pill badge above the headline
+Visa & Travel Assistance · Dubai
+
+LOCATION: Main headline (H1)
+Expert Visa & Travel Assistance in Dubai
+
+LOCATION: Paragraph under the headline
+Travnook is a trusted travel agency in Dubai offering worldwide visa assistance for 50+ countries. We help UAE residents with Schengen, US, UK, Canada and other visa applications, embassy appointments, flights, hotels and complete travel planning - all under one roof.
+
+LOCATION: Buttons under the paragraph
+Talk to a Visa Expert | Free Consultation
+
+LOCATION: Trust line under the buttons (shield icon)
+Trusted by 20,000+ travelers since 2015
+
+LOCATION: Scroll hint at the bottom of the hero
+Scroll
+
+
+----------------------------------------------------------------
+4. QUICK APPLY FORM
+   (right side of hero on desktop / bottom of page on mobile)
+----------------------------------------------------------------
+
+LOCATION: Form card title
+Start Your Visa Application
+
+LOCATION: Small green badge next to title
+15-Minute Response
+
+LOCATION: Line under the title
+Get a free consultation from our visa experts in 15 mins.
+
+LOCATION: Form field labels
+Full Name * | Phone / WhatsApp * | Destination *
+
+LOCATION: Form field placeholders
+John Doe | 50 123 4567 | Choose destination
+
+LOCATION: Submit button
+Request a Callback
+
+LOCATION: Small line under the submit button
+100% Free consultation · No Hidden Charges
+
+LOCATION: Keyword-rich SEO line below the form
+Need help with a Schengen, UK, US, Canada or other visa? Our visa specialists are here to help.
+
+LOCATION: Section label above the form (mobile bottom position only)
+Apply Now
+
+LOCATION: Form status messages (shown after user actions)
+Please enter your full name and phone number.
+Please select the country.
+Loading...
+Thank you! Your enquiry has been received. Our specialist will contact you shortly.
+We've already received your enquiry. Our team will contact you soon.
+Something went wrong. Please try again or contact us directly on WhatsApp.
+
+LOCATION: Country picker popup (opens from phone code and destination fields)
+Select country code | Choose your destination | Search country... | Popular destinations | All countries | No countries found
+
+
+----------------------------------------------------------------
+5. DESTINATIONS MARQUEE (gold moving strip under the hero)
+----------------------------------------------------------------
+
+LOCATION: Scrolling city names (English only, decorative)
+PARIS · SEOUL · TOKYO · LONDON · ROME · NEW YORK · MADRID · BALI · ZURICH · TRAVNOOK
+
+
+----------------------------------------------------------------
+6. WHO WE ARE SECTION
+----------------------------------------------------------------
+
+LOCATION: Section label (small, above the title)
+01 — About Travnook
+
+LOCATION: Section title (H2)
+Your Trusted Travel Agency in Dubai
+
+LOCATION: Intro paragraph under the title
+Founded in 2015, Travnook is a trusted travel agency in Dubai. We specialize in worldwide visa assistance, holiday packages, flights, hotels and travel planning. We've helped over 20,000 UAE travelers with visa applications for 50+ countries. We offer expert guidance, transparent process and dedicated support from consultation to departure.
+
+LOCATION: White badge on the photo (bottom left corner)
+20,000+ / Travelers Assisted Since 2015
+
+LOCATION: Feature list, item 1 (title + description)
+Dedicated Visa Expert — One-on-one support, complete document review and expert guidance throughout the application process.
+
+LOCATION: Feature list, item 2 (title + description)
+Embassy-Compliant Travel Bookings — Verifiable flight itineraries and confirmed hotel reservations that meet embassy and consulate requirements.
+
+LOCATION: Feature list, item 3 (title + description)
+Transparent & Reliable Service — No hidden fees, no unrealistic promises. You will receive clear pricing, honest timelines and regular updates on your visa application.
+
+LOCATION: Button at the end of the feature list
+Start Your Application
+
+LOCATION: Dark stats bar (4 animated counters at the bottom of the section)
+10+ Years of Experience | 20K+ Travelers Assisted | 50+ Visa Destinations | 24/7 Dedicated Customer Support
+
+
+----------------------------------------------------------------
+7. FOOTER
+----------------------------------------------------------------
+
+LOCATION: Disclaimer paragraph (center of footer)
+Disclaimer: Travnook is an independent travel agency and visa assistance provider based in Dubai, UAE. We offer visa assistance, travel planning and related support services. Travnook is not affiliated with, authorized by or endorsed by any embassy, consulate or government authority. Official visa applications and decisions are handled solely by the respective embassy or immigration authority. Our service fees are separate from applicable government or visa fees.
+
+LOCATION: Footer links
+Privacy Policy | Terms & Conditions
+
+LOCATION: Copyright line (year updates automatically)
+© 2026 Travnook Travel & Tourism LLC. All Rights Reserved
+
+
+----------------------------------------------------------------
+8. CONTACT DETAILS USED ON THE PAGE
+----------------------------------------------------------------
+
+Call / WhatsApp: +971 54 438 8038
+Email: contact@travnook.com
+Office: Dubai, UAE
+WhatsApp prefilled message: "Hello Travnook, I need assistance with my visa application."
+
+================================================================
+END OF ENGLISH CONTENT
+================================================================
